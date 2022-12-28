@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Datos que describen el documento -->
+    <meta charset="UTF-8">
+
+    <!--Titulo del documento-->
+    <title>Grafo Pokemon</title>
+    <!-- añadir el elemento link de enlace a la hoja de estilo dentro del <head> del documento html -->
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+
+    <!--Definición de la ventana gráfica-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/neo4j-driver"></script>
+    <script src="https://unpkg.com/neovis.js@2.0.2"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Gestión base de datos Pokemon</h1>
+    </header>
+    <nav>
+        <a href="#consulta1">Consulta 1</a>
+        <a href="#consulta2">Consulta 2</a>
+        <a href="#consulta3">Consulta 3</a>
+        <a href="#consulta4">Consulta 4</a>
+        <a href="#consulta5">Consulta 5</a>
+        <a href="#consulta6">Consulta 6</a>
+    </nav>
+    <main>
+        <div id="grafo"></div>
+        <section id="consulta1">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta1()">
+        </section>
+        <section id="consulta2">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta2()">
+        </section>
+        <section id="consulta3">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta3()">
+        </section>
+        <section id="consulta4">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta4()">
+        </section>
+        <section id="consulta5">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta5()">
+        </section>
+        <section id="consulta6">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta()">
+        </section>
+    </main>
+</body>
+
+</html>
