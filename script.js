@@ -1,44 +1,70 @@
-class Pokemon{
+class Pokemon {
 
-    constructor(){
-        const driver = neo4j.driver("neo4j+s://cf153a5b.databases.neo4j.io:7687"
-            , neo4j.auth.basic("neo4j", "K8knVxOnUgtrInA8M7mJ0P8Joq9iMOocDKGgRLrX-Bc"))
-        this.session = driver.session()
+    constructor() {
+        this.conectarDriver();
     }
-    
-    dibujarGrafo(){
+
+    async conectarDriver() {
+        const driver = neo4j.driver("bolt://35.170.182.177:7687"
+            , neo4j.auth.basic("neo4j", "boom-selections-male"))
+
         try {
-            result =  this.session.run(
-              'CREATE (a:Person {name: $name}) RETURN a',
-              { name: personName }
-            )
-          
-             singleRecord = result.records[0]
-             node = singleRecord.get(0)
-          
-            console.log(node.properties.name)
-          } finally {
-            this.session.close()
-          }
+            await driver.verifyConnectivity();
+            console.log('Driver created');
+        } catch (error) {
+            console.log(`connectivity verification failed. ${error}`);
+        } finally {
+            this.session = driver.session();
+        }
     }
 
-    consulta1(){
-        this.dibujarGrafo();
+    async consulta1() {
+        try {
+            var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+            console.log(result);
+        } finally {
+            await this.session.close();
+        }
     }
-    consulta2(){
-        this.dibujarGrafo();
+
+    async consulta2() {
+        try {
+            var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        } finally {
+            await this.session.close();
+        }
     }
-    consulta3(){
-        this.dibujarGrafo();
+
+    async consulta3() {
+        try {
+            var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        } finally {
+            await this.session.close();
+        }
     }
-    consulta4(){
-        this.dibujarGrafo();
+
+    async consulta4() {
+        try {
+            var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        } finally {
+            await this.session.close();
+        }
     }
-    consulta5(){
-        this.dibujarGrafo();
+
+    async consulta5() {
+        try {
+            var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        } finally {
+            await this.session.close();
+        }
     }
-    consulta6(){
-        this.dibujarGrafo();
+
+    async consulta6() {
+        try {
+            var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        } finally {
+            await this.session.close();
+        }
     }
 }
 
