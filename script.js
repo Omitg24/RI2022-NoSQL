@@ -1,8 +1,6 @@
 class Pokemon{
 
     constructor(){
-        const neo4j = require('neo4j-driver');
-
         const driver = neo4j.driver("neo4j+s://cf153a5b.databases.neo4j.io:7687"
             , neo4j.auth.basic("neo4j", "K8knVxOnUgtrInA8M7mJ0P8Joq9iMOocDKGgRLrX-Bc"))
         this.session = driver.session()
