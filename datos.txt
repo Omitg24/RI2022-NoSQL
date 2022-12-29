@@ -30,50 +30,43 @@ CREATE (Toxicroak:Pokemon {nombre:'Toxicroak', numero:454})
 CREATE (Blaziken:Pokemon {nombre:'Blaziken', numero:257})
 
 CREATE
-	(Piplup)-[:EVOLUCIONA_A]->(Empoleon),
-	(Larvitar)-[:EVOLUCIONA_A]->(Tyranitar),
-	(Munchlax)-[:EVOLUCIONA_A]->(Snorlax),
-	(Eevee)-[:EVOLUCIONA_A]->(Jolteon),
-	(Eevee)-[:EVOLUCIONA_A]->(Vaporeon),
-	(Turtwig)-[:EVOLUCIONA_A]->(Torterra),
-	(Caterpie)-[:EVOLUCIONA_A]->(Metapod),
-	(Grovyle)-[:EVOLUCIONA_A]->(Sceptile)
-
-CREATE
-    (Gigaimpacto:Movimiento {nombre:'Gigaimpacto'})
-    (Hiperrayo:Movimiento {nombre:'Hiperrayo'})
-    (Energibola:Movimiento {nombre:'Energibola'})
-    (Drenadoras:Movimiento {nombre:'Drenadoras'})
-    (Surf:Movimiento {nombre:'Surf'})
-    (Hidrobomba:Movimiento {nombre:'Hidrobomba'})
-    (Envite Igneo:Movimiento {nombre:'Envite Igneo'})
-    (Sofoco:Movimiento {nombre:'Sofoco'})
-    (Cabeza de hierro:Movimiento {nombre:'Cabeza de hierro'})
-    (Ala de acero:Movimiento {nombre:'Ala de acero'})
-    (Zumbido:Movimiento {nombre:'Zumbido'})
-    (Chupavidas:Movimiento {nombre:'Chupavidas'})
-    (Garra Dragon:Movimiento {nombre:'Garra Dragon'})
-    (Cometa Draco:Movimiento {nombre:'Cometa Draco'})
-    (Rayo:Movimiento {nombre:'Rayo'})
-    (Voltiocambio:Movimiento {nombre:'Voltiocambio'})
-    (Garra Umbria:Movimiento {nombre:'Garra Umbria'})
-    (Bola Sombra:Movimiento {nombre:'Bola Sombra'})
-    (Robo:Movimiento {nombre:'Robo'})
-    (Persecucion:Movimiento {nombre:'Persecucion'})
-    (Trapicheo:Movimiento {nombre:'Trapicheo'})
-    (Paliza:Movimiento {nombre:'Paliza'})
-    (Psicopatada:Movimiento {nombre:'Psicopatada'})
-    (A bocajarro:Movimiento {nombre:'A bocajarro'})
-    (Espacio raro:Movimiento {nombre:'Espacio raro'})
-    (Psiquico:Movimiento {nombre:'Psiquico'})
-    (Brillo Magico:Movimiento {nombre:'Brillo Magico'})
-    (Cura floral:Movimiento {nombre:'Cura floral'})
-    (Nieve polvo:Movimiento {nombre:'Nieve polvo'})
-    (Colmillo Hielo:Movimiento {nombre:'Colmillo Hielo'})
-    (Pedrada:Movimiento {nombre:'Pedrada'})
-    (Romperrocas:Movimiento {nombre:'Romperrocas'})
-    (Vuelo:Movimiento {nombre:'Vuelo'})
-    (Despejar:Movimiento {nombre:'Despejar'})
+    (Gigaimpacto:Movimiento {nombre:'Gigaimpacto'}),
+    (Hiperrayo:Movimiento {nombre:'Hiperrayo'}),
+    (Energibola:Movimiento {nombre:'Energibola'}),
+    (Drenadoras:Movimiento {nombre:'Drenadoras'}),
+    (Surf:Movimiento {nombre:'Surf'}),
+    (Hidrobomba:Movimiento {nombre:'Hidrobomba'}),
+    (Envite_igneo:Movimiento {nombre:'Envite Igneo'}),
+    (Sofoco:Movimiento {nombre:'Sofoco'}),
+    (Cabeza_de_hierro:Movimiento {nombre:'Cabeza de hierro'}),
+    (Ala_de_acero:Movimiento {nombre:'Ala de acero'}),
+    (Zumbido:Movimiento {nombre:'Zumbido'}),
+    (Chupavidas:Movimiento {nombre:'Chupavidas'}),
+    (Garra_dragon:Movimiento {nombre:'Garra Dragon'}),
+    (Cometa_draco:Movimiento {nombre:'Cometa Draco'}),
+    (Rayo:Movimiento {nombre:'Rayo'}),
+    (Voltiocambio:Movimiento {nombre:'Voltiocambio'}),
+    (Garra_umbria:Movimiento {nombre:'Garra Umbria'}),
+    (Bola_sombra:Movimiento {nombre:'Bola Sombra'}),
+    (Robo:Movimiento {nombre:'Robo'}),
+    (Persecucion:Movimiento {nombre:'Persecucion'}),
+    (Trapicheo:Movimiento {nombre:'Trapicheo'}),
+    (Paliza:Movimiento {nombre:'Paliza'}),
+    (Psicopatada:Movimiento {nombre:'Psicopatada'}),
+    (A_bocajarro:Movimiento {nombre:'A bocajarro'}),
+    (Espacio_raro:Movimiento {nombre:'Espacio raro'}),
+    (Paz_mental:Movimiento {nombre:'Paz_mental'}),
+    (Brillo_magico:Movimiento {nombre:'Brillo Magico'}),
+    (Cura_floral:Movimiento {nombre:'Cura floral'}),
+    (Nieve_polvo:Movimiento {nombre:'Nieve polvo'}),
+    (Colmillo_hielo:Movimiento {nombre:'Colmillo Hielo'}),
+    (Pedrada:Movimiento {nombre:'Pedrada'}),
+    (Romperrocas:Movimiento {nombre:'Romperrocas'}),
+    (Vuelo:Movimiento {nombre:'Vuelo'}),
+    (Despejar:Movimiento {nombre:'Despejar'}),
+    (Eructo:Movimiento {nombre:'Eructo'}),
+    (Terremoto:Movimiento {nombre:'Terremoto'}),
+    (Fertilizante:Movimiento {nombre:'Fertilizante'})
 
 CREATE (Acero:Tipo {nombre:'Acero'})
 CREATE (Agua:Tipo {nombre:'Agua'})
@@ -119,7 +112,7 @@ CREATE
     (Jincho)-[:COMBATE_CONTRA]->(Winoloko)
 
 CREATE 
-    (Piplul)-[:EVOLUCIONA_A]->(Empoleon),
+    (Piplup)-[:EVOLUCIONA_A]->(Empoleon),
     (Eevee)-[:EVOLUCIONA_A]->(Vaporeon),
     (Eevee)-[:EVOLUCIONA_A]->(Jolteon),
     (Turtwig)-[:EVOLUCIONA_A]->(Torterra),
@@ -227,30 +220,30 @@ CREATE
     (Drenadoras)-[:ES_DE_TIPO]->(Drenadoras),
     (Surf)-[:ES_DE_TIPO]->(Agua),
     (Hidrobomba)-[:ES_DE_TIPO]->(Agua),
-    (Envite Igneo)-[:ES_DE_TIPO]->(Fuego),
+    (Envite_igneo)-[:ES_DE_TIPO]->(Fuego),
     (Sofoco)-[:ES_DE_TIPO]->(Fuego),
-    (Cabeza de hierro)-[:ES_DE_TIPO]->(Acero),
-    (Ala de acero)-[:ES_DE_TIPO]->(Acero),
+    (Cabeza_de_hierro)-[:ES_DE_TIPO]->(Acero),
+    (Ala_de_acero)-[:ES_DE_TIPO]->(Acero),
     (Zumbido)-[:ES_DE_TIPO]->(Bicho),
     (Chupavidas)-[:ES_DE_TIPO]->(Bicho),
-    (Garra Dragon)-[:ES_DE_TIPO]->(Dragon),
-    (Cometa Draco)-[:ES_DE_TIPO]->(Dragon),
+    (Garra_dragon)-[:ES_DE_TIPO]->(Dragon),
+    (Cometa_draco)-[:ES_DE_TIPO]->(Dragon),
     (Rayo)-[:ES_DE_TIPO]->(Electrico),
     (Voltiocambio)-[:ES_DE_TIPO]->(Electrico),
-    (Garra Umbria)-[:ES_DE_TIPO]->(Fantasma),
-    (Bola Sombra)-[:ES_DE_TIPO]->(Fantasma),
+    (Garra_umbria)-[:ES_DE_TIPO]->(Fantasma),
+    (Bola_sombra)-[:ES_DE_TIPO]->(Fantasma),
     (Robo)-[:ES_DE_TIPO]->(Siniestro),
     (Persecucion)-[:ES_DE_TIPO]->(Siniestro),
     (Trapicheo)-[:ES_DE_TIPO]->(Siniestro),
     (Paliza)-[:ES_DE_TIPO]->(Lucha),
     (Psicopatada)-[:ES_DE_TIPO]->(Lucha),
-    (A bocajarro)-[:ES_DE_TIPO]->(Lucha),
-    (Espacio raro)-[:ES_DE_TIPO]->(Psiquico),
-    (Psiquico)-[:ES_DE_TIPO]->(Psiquico),
-    (Brillo Magico)-[:ES_DE_TIPO]->(Hada),
-    (Cura floral)-[:ES_DE_TIPO]->(Hada),
-    (Nieve polvo)-[:ES_DE_TIPO]->(Hielo),
-    (Colmillo Hielo)-[:ES_DE_TIPO]->(Hielo),
+    (A_bocajarro)-[:ES_DE_TIPO]->(Lucha),
+    (Espacio_raro)-[:ES_DE_TIPO]->(Psiquico),
+    (Paz_mental)-[:ES_DE_TIPO]->(Psiquico),
+    (Brillo_magico)-[:ES_DE_TIPO]->(Hada),
+    (Cura_floral)-[:ES_DE_TIPO]->(Hada),
+    (Nieve_polvo)-[:ES_DE_TIPO]->(Hielo),
+    (Colmillo_hielo)-[:ES_DE_TIPO]->(Hielo),
     (Pedrada)-[:ES_DE_TIPO]->(Roca),
     (Romperrocas)-[:ES_DE_TIPO]->(Roca),
     (Vuelo)-[:ES_DE_TIPO]->(Volador),
@@ -333,23 +326,23 @@ CREATE
 CREATE 
     (Empoleon)-[:CONOCE]->(Surf),
     (Empoleon)-[:CONOCE]->(Hidrobomba),
-    (Empoleon)-[:CONOCE]->(Cabeza de Hierro),
-    (Empoleon)-[:CONOCE]->(Ala de acero),
-    (Emboar)-[:CONOCE]->(Envite Igneo),
+    (Empoleon)-[:CONOCE]->(Cabeza_de_hierro),
+    (Empoleon)-[:CONOCE]->(Ala_de_acero),
+    (Emboar)-[:CONOCE]->(Envite_igneo),
     (Emboar)-[:CONOCE]->(Sofoco),
     (Emboar)-[:CONOCE]->(Terremoto),
     (Emboar)-[:CONOCE]->(Fertilizante),
     (Zekrom)-[:CONOCE]->(Voltiocambio),
     (Zekrom)-[:CONOCE]->(Rayo),
-    (Zekrom)-[:CONOCE]->(Garra Dragon),
-    (Zekrom)-[:CONOCE]->(Cometa Draco),
-    (Rayquaza)-[:CONOCE]->(Cometa Draco),
-    (Rayquaza)-[:CONOCE]->(Garra Dragon),
+    (Zekrom)-[:CONOCE]->(Garra_dragon),
+    (Zekrom)-[:CONOCE]->(Cometa_draco),
+    (Rayquaza)-[:CONOCE]->(Cometa_draco),
+    (Rayquaza)-[:CONOCE]->(Garra_dragon),
     (Rayquaza)-[:CONOCE]->(Vuelo),
-    (Rayquaza)-[:CONOCE]->(Brillo Magico),
+    (Rayquaza)-[:CONOCE]->(Brillo_magico),
     (Vaporeon)-[:CONOCE]->(Surf),
     (Vaporeon)-[:CONOCE]->(Hidrobomba),
-    (Vaporeon)-[:CONOCE]->(Cura floral),
+    (Vaporeon)-[:CONOCE]->(Cura_floral),
     (Vaporeon)-[:CONOCE]->(Persecucion),
     (Tyranitar)-[:CONOCE]->(Pedrada),
     (Tyranitar)-[:CONOCE]->(Romperrocas),
@@ -357,12 +350,12 @@ CREATE
     (Tyranitar)-[:CONOCE]->(Trapicheo),
     (Snorlax)-[:CONOCE]->(Gigaimpacto),
     (Snorlax)-[:CONOCE]->(Hiperrayo),
-    (Snorlax)-[:CONOCE]->(A bocajarro),
+    (Snorlax)-[:CONOCE]->(A_bocajarro),
     (Snorlax)-[:CONOCE]->(Despejar),
     (Starmie)-[:CONOCE]->(Surf),
     (Starmie)-[:CONOCE]->(Hidrobomba),
-    (Starmie)-[:CONOCE]->(Espacio raro),
-    (Starmie)-[:CONOCE]->(Psiquico),
+    (Starmie)-[:CONOCE]->(Espacio_raro),
+    (Starmie)-[:CONOCE]->(Paz_mental),
     (Zapdos)-[:CONOCE]->(Rayo),
     (Zapdos)-[:CONOCE]->(Voltiocambio),
     (Zapdos)-[:CONOCE]->(Vuelo),
@@ -375,10 +368,10 @@ CREATE
     (Jolteon)-[:CONOCE]->(Rayo),
     (Jolteon)-[:CONOCE]->(Chupavidas),
     (Jolteon)-[:CONOCE]->(Paliza),
-    (Alakazam)-[:CONOCE]->(Psiquico),
-    (Alakazam)-[:CONOCE]->(Espacio raro),
+    (Alakazam)-[:CONOCE]->(Paz_mental),
+    (Alakazam)-[:CONOCE]->(Espacio_raro),
     (Alakazam)-[:CONOCE]->(Psicopatada),
-    (Alakazam)-[:CONOCE]->(Bola Sombra),
+    (Alakazam)-[:CONOCE]->(Bola_sombra),
     (Sceptile)-[:CONOCE]->(Energibola),
     (Sceptile)-[:CONOCE]->(Drenadoras),
     (Sceptile)-[:CONOCE]->(Terremoto),
@@ -390,15 +383,15 @@ CREATE
     (Amongus)-[:CONOCE]->(Drenadoras),
     (Amongus)-[:CONOCE]->(Energibola),
     (Amongus)-[:CONOCE]->(Despejar),
-    (Amongus)-[:CONOCE]->(Cura floral),
-    (Jynx)-[:CONOCE]->(Nieve polvo),
-    (Jynx)-[:CONOCE]->(Colmillo Hielo),
+    (Amongus)-[:CONOCE]->(Cura_floral),
+    (Jynx)-[:CONOCE]->(Nieve_polvo),
+    (Jynx)-[:CONOCE]->(Colmillo_hielo),
     (Jynx)-[:CONOCE]->(Persecucion),
     (Jynx)-[:CONOCE]->(Robo),
     (Shaymin)-[:CONOCE]->(Energibola),
     (Shaymin)-[:CONOCE]->(Drenadoras),
-    (Shaymin)-[:CONOCE]->(Cura floral),
-    (Shaymin)-[:CONOCE]->(Psiquico),
+    (Shaymin)-[:CONOCE]->(Cura_floral),
+    (Shaymin)-[:CONOCE]->(Paz_mental),
     (Torterra)-[:CONOCE]->(Energibola),
     (Torterra)-[:CONOCE]->(Drenadoras),
     (Torterra)-[:CONOCE]->(Terremoto),
@@ -409,7 +402,7 @@ CREATE
     (Turtwig)-[:CONOCE]->(Romperrocas),
     (Eevee)-[:CONOCE]->(Gigaimpacto),
     (Eevee)-[:CONOCE]->(Hiperrayo),
-    (Eevee)-[:CONOCE]->(A bocajarro),
+    (Eevee)-[:CONOCE]->(A_bocajarro),
     (Eevee)-[:CONOCE]->(Despejar),
     (Larvitar)-[:CONOCE]->(Pedrada),
     (Larvitar)-[:CONOCE]->(Romperrocas),
@@ -418,7 +411,7 @@ CREATE
     (Piplup)-[:CONOCE]->(Surf),
     (Piplup)-[:CONOCE]->(Hidrobomba),
     (Piplup)-[:CONOCE]->(Persecucion),
-    (Piplup)-[:CONOCE]->(Cabeza de hierro),
+    (Piplup)-[:CONOCE]->(Cabeza_de_hierro),
     (Munchlax)-[:CONOCE]->(Gigaimpacto),
     (Munchlax)-[:CONOCE]->(Hiperrayo),
     (Munchlax)-[:CONOCE]->(Despejar),
@@ -426,29 +419,29 @@ CREATE
     (Grovyle)-[:CONOCE]->(Energibola),
     (Grovyle)-[:CONOCE]->(Drenadoras),
     (Grovyle)-[:CONOCE]->(Eructo),
-    (Grovyle)-[:CONOCE]->(Bola Sombra),
-    (Deoxys)-[:CONOCE]->(Psiquico),
-    (Deoxys)-[:CONOCE]->(Espacio raro),
+    (Grovyle)-[:CONOCE]->(Bola_sombra),
+    (Deoxys)-[:CONOCE]->(Paz_mental),
+    (Deoxys)-[:CONOCE]->(Espacio_raro),
     (Deoxys)-[:CONOCE]->(Psicopatada),
     (Deoxys)-[:CONOCE]->(Vuelo),
-    (Groudon)-[:CONOCE]->(Envite Igneo),
+    (Groudon)-[:CONOCE]->(Envite_igneo),
     (Groudon)-[:CONOCE]->(Sofoco),
     (Groudon)-[:CONOCE]->(Terremoto),
     (Groudon)-[:CONOCE]->(Fertilizante),
-    (Jirachi)-[:CONOCE]->(Cometa Draco),
-    (Jirachi)-[:CONOCE]->(Garra Dragon),
-    (Jirachi)-[:CONOCE]->(Ala de acero),
-    (Jirachi)-[:CONOCE]->(Cabeza de hierro),
-    (Hitmonchan)-[:CONOCE]->(A bocajarro),
+    (Jirachi)-[:CONOCE]->(Cometa_draco),
+    (Jirachi)-[:CONOCE]->(Garra_dragon),
+    (Jirachi)-[:CONOCE]->(Ala_de_acero),
+    (Jirachi)-[:CONOCE]->(Cabeza_de_hierro),
+    (Hitmonchan)-[:CONOCE]->(A_bocajarro),
     (Hitmonchan)-[:CONOCE]->(Psicopatada),
     (Hitmonchan)-[:CONOCE]->(Paliza),
-    (Hitmonchan)-[:CONOCE]->(Colmillo Hielo),
+    (Hitmonchan)-[:CONOCE]->(Colmillo_hielo),
     (Toxicroak)-[:CONOCE]->(Psicopatada),
     (Toxicroak)-[:CONOCE]->(Eructo),
     (Toxicroak)-[:CONOCE]->(Zumbido),
     (Toxicroak)-[:CONOCE]->(Robo),
     (Blaziken)-[:CONOCE]->(Trapicheo),
-    (Blaziken)-[:CONOCE]->(Envite Igneo),
+    (Blaziken)-[:CONOCE]->(Envite_igneo),
     (Blaziken)-[:CONOCE]->(Sofoco),
-    (Blaziken)-[:CONOCE]->(A bocajarro)
+    (Blaziken)-[:CONOCE]->(A_bocajarro)
 

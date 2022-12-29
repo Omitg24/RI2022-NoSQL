@@ -10,62 +10,108 @@ class Pokemon {
                 serverPassword: "boom-selections-male"
             },
             labels: {
-                "Pokemon": {
+                Pokemon: {
                     label: "nombre",
+                    caption: "nombre",
                     value: "pagerank",
-                    group: "community"
-                }, 
-                "Movimiento": {
+                    group: "Pink"
+                },
+                Movimiento: {
                     label: "nombre",
+                    caption: "nombre",
                     value: "pagerank",
-                    group: "community"
-                }, 
-                "Tipo": {
+                    group: "Magenta"
+                },
+                Tipo: {
                     label: "nombre",
+                    caption: "nombre",
                     value: "pagerank",
-                    group: "community"
-                }, 
-                "Region": {
+                    group: "Red"
+                },
+                Region: {
                     label: "nombre",
+                    caption: "nombre",
                     value: "pagerank",
-                    group: "community"
-                }, 
-                "Entrenador": {
+                    group: "Green"
+                },
+                Entrenador: {
                     label: "nombre",
+                    caption: "nombre",
                     value: "pagerank",
-                    group: "community"
+                    group: "Blue"
                 }
             },
             relationships: {
-                "EVOLUCIONA_A":{
-                    label: true
+                "EVOLUCIONA_A": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "EVOLUCIONA_A"
+                        }
+                    }
                 },
-                "COMBATE_CONTRA":{
-                    label: true
+                "COMBATE_CONTRA": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "COMBATE_CONTRA"
+                        }
+                    }
                 },
-                "LIDERA":{
-                    label: true
+                "LIDERA": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "LIDERA"
+                        }
+                    }
                 },
-                "PERTENECE":{
-                    label: true
+                "PERTENECE": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "PERTENECE"
+                        }
+                    }
                 },
-                "ES_EFICAZ":{
-                    label: true
+                "ES_EFICAZ": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "ES_EFICAZ"
+                        }
+                    }
                 },
-                "ES_DE_TIPO":{
-                    label: true
+                "ES_DE_TIPO": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "ES_DE_TIPO"
+                        }
+                    }
                 },
-                "ENTRENA":{
-                    label: true
+                "ENTRENA": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "ENTRENA"
+                        }
+                    }
                 },
-                "TIENE_TIPO":{
-                    label: true
+                "TIENE_TIPO": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "TIENE_TIPO"
+                        }
+                    }
                 },
-                "CONOCE":{
-                    label: true
-                }        
-            }
-        };
+                "CONOCE": {
+                    [NeoVis.NEOVIS_ADVANCED_CONFIG]: {
+                        static: {
+                            label: "CONOCE"
+                        }
+                    }
+                }
+            },
+            arrows: true,
+            hierarchical: true,
+            hierarchical_sort_method: 'directed',
+            encrypted: 'ENCRYPTION_OFF',
+            trust: 'TRUST_ALL_CERTIFICATES'
+        }
 
         this.viz = new NeoVis.default(config);
     }
@@ -83,20 +129,20 @@ class Pokemon {
         }
     }
 
-    limpiarResultado(){
+    limpiarResultado() {
         $("#resultado p ").remove();
     }
 
-    mostrarResultado(){
+    mostrarResultado() {
         this.viz.reload();
-        this.viz.stabilize();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     async consulta1() {
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
-        this.viz.renderWithCypher("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        var result = await this.session.run("MATCH (n:Entrenador{nombre:'Jincho'}) RETURN n ");
+        console.log(result);
+        this.viz.renderWithCypher("MATCH (n:Entrenador{nombre:'Jincho'}) RETURN n ");
         this.mostrarResultado();
     }
 
@@ -138,9 +184,9 @@ class Pokemon {
         try {
             var result = await this.session.run(query);
             this.viz.renderWithCypher(query);
-        }catch(error){
+        } catch (error) {
             $("#resultado").append("<p>ERROR: Introduce una consulta correcta</p>");
-        }finally{
+        } finally {
             this.mostrarResultado();
         }
 
