@@ -8,11 +8,11 @@ class Pokemon {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male"
-            },visConfig: {
+            }, visConfig: {
                 autoResize: true,
                 edges: {
                     arrows: {
-                        to: {enabled: true}
+                        to: { enabled: true }
                     }
                 },
                 physics: {
@@ -157,77 +157,51 @@ class Pokemon {
         $("#resultado").text("");
     }
 
-    mostrarResultado() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    convertirResultado(result){
+    convertirResultado(result) {
         var str = "";
-        for(var r = 0; r<result.records.length;r++){
-            str+="Nombre: "+result.records[r]._fields[0].properties.nombre+
-                ", Número: "+result.records[r]._fields[0].properties.numero+"\n";
+        for (var r = 0; r < result.records.length; r++) {
+            str += "Nombre: " + result.records[r]._fields[0].properties.nombre +
+                ", Número: " + result.records[r]._fields[0].properties.numero + "\n";
         }
         return str;
     }
 
-    async consulta1() {
+    async ejecutarConsulta(query) {
+        this.limpiarResultado();
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
+    }
+
+    consulta1() {
         var query = 'MATCH (:Entrenador{nombre:"Knekro"})-[:ENTRENA]->(n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Electrico"}) RETURN n';
-        this.limpiarResultado();
-        var result = await this.session.run(query);
-        var str = this.convertirResultado(result);
-        $("#resultado").text(str);
-        this.viz.renderWithCypher(query);
-        this.mostrarResultado();
+        this.ejecutarConsulta(query);
     }
 
-    async consulta2() {
+    consulta2() {
         var query = 'MATCH (n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Agua"}) MERGE (:Pokemon)-[:CONOCE]->(:Movimiento{nombre:"Surf"}) RETURN DISTINCT n';
-        this.limpiarResultado();
-        var result = await this.session.run(query);
-        var str = this.convertirResultado(result);
-        $("#resultado").text(str);
-        this.viz.renderWithCypher(query);
-        this.mostrarResultado();
+        this.ejecutarConsulta(query);
     }
 
-    async consulta3() {
+    consulta3() {
         var query = '';
-        this.limpiarResultado();
-        var result = await this.session.run(query);
-        var str = this.convertirResultado(result);
-        $("#resultado").text(str);
-        this.viz.renderWithCypher(query);
-        this.mostrarResultado();
+        this.ejecutarConsulta(query);
     }
 
-    async consulta4() {
+    consulta4() {
         var query = 'MATCH (n:Pokemon)-[:EVOLUCIONA_A]->(p:Pokemon),(p)-[:TIENE_TIPO]->(t:Tipo) WHERE NOT (n)-[:TIENE_TIPO]->(:Tipo{nombre:t.nombre}) RETURN DISTINCT n';
-        this.limpiarResultado();
-        var result = await this.session.run(query);
-        var str = this.convertirResultado(result);
-        $("#resultado").text(str);
-        this.viz.renderWithCypher(query);
-        this.mostrarResultado();
+        this.ejecutarConsulta(query);
     }
 
-    async consulta5() {
-        var query = '';
-        this.limpiarResultado();
-        var result = await this.session.run(query);
-        var str = this.convertirResultado(result);
-        $("#resultado").text(str);
-        this.viz.renderWithCypher(query);
-        this.mostrarResultado();
+    consulta5() {
+        var query = 'MATCH((p:Pokemon)-[:CONOCE]->(m:Movimiento)-[:ES_DE_TIPO]-(t:Tipo)) WHERE NOT EXISTS{MATCH (pok:Pokemon)-[:TIENE_TIPO]->(tip:Tipo) WHERE p=pok AND tip=t} RETURN DISTINCT p';
+        this.ejecutarConsulta(query);
     }
 
-    async consulta6() {
+    consulta6() {
         var query = '';
-        this.limpiarResultado();
-        var result = await this.session.run(query);
-        var str = this.convertirResultado(result);
-        $("#resultado").text(str);
-        this.viz.renderWithCypher(query);
-        this.mostrarResultado();
+        this.ejecutarConsulta(query);
     }
 
     async consultaG() {
@@ -238,7 +212,7 @@ class Pokemon {
             var result = await this.session.run(query);
             this.viz.renderWithCypher(query);
         } catch (error) {
-            $("#resultado").text("<p>ERROR: Introduce una consulta correcta</p>");
+            $("#resultado").text("ERROR: Introduce una consulta correcta");
         } finally {
             this.mostrarResultado();
         }
