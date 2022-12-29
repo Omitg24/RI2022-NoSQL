@@ -5,7 +5,7 @@ class Pokemon {
         var config = {
             containerId: "viz",
             neo4j: {
-                serverUrl: "bolt://35.170.182.177:7687",
+                serverUrl: "bolt+s://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male",
                 encrypted: "ENCRYPTION_ON"
