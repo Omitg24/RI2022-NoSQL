@@ -133,7 +133,7 @@ class Pokemon {
             arrows: true,
             hierarchical: true,
             hierarchical_sort_method: 'directed',
-            encrypted: 'ENCRYPTION_OFF',
+            encrypted: 'ENCRYPTION_ON',
             trust: 'TRUST_ALL_CERTIFICATES'
         }
 
