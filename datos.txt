@@ -30,16 +30,6 @@ CREATE (Toxicroak:Pokemon {nombre:'Toxicroak', numero:454})
 CREATE (Blaziken:Pokemon {nombre:'Blaziken', numero:257})
 
 CREATE
-	(Piplup)-[:EVOLUCIONA_A]->(Empoleon),
-	(Larvitar)-[:EVOLUCIONA_A]->(Tyranitar),
-	(Munchlax)-[:EVOLUCIONA_A]->(Snorlax),
-	(Eevee)-[:EVOLUCIONA_A]->(Jolteon),
-	(Eevee)-[:EVOLUCIONA_A]->(Vaporeon),
-	(Turtwig)-[:EVOLUCIONA_A]->(Torterra),
-	(Caterpie)-[:EVOLUCIONA_A]->(Metapod),
-	(Grovyle)-[:EVOLUCIONA_A]->(Sceptile)
-
-CREATE
     (Gigaimpacto:Movimiento {nombre:'Gigaimpacto'}),
     (Hiperrayo:Movimiento {nombre:'Hiperrayo'}),
     (Energibola:Movimiento {nombre:'Energibola'}),
@@ -73,7 +63,10 @@ CREATE
     (Pedrada:Movimiento {nombre:'Pedrada'}),
     (Romperrocas:Movimiento {nombre:'Romperrocas'}),
     (Vuelo:Movimiento {nombre:'Vuelo'}),
-    (Despejar:Movimiento {nombre:'Despejar'})
+    (Despejar:Movimiento {nombre:'Despejar'}),
+    (Eructo:Movimiento {nombre:'Eructo'}),
+    (Terremoto:Movimiento {nombre:'Terremoto'}),
+    (Fertilizante:Movimiento {nombre:'Fertilizante'})
 
 CREATE (Acero:Tipo {nombre:'Acero'})
 CREATE (Agua:Tipo {nombre:'Agua'})
@@ -119,7 +112,7 @@ CREATE
     (Jincho)-[:COMBATE_CONTRA]->(Winoloko)
 
 CREATE 
-    (Piplul)-[:EVOLUCIONA_A]->(Empoleon),
+    (Piplup)-[:EVOLUCIONA_A]->(Empoleon),
     (Eevee)-[:EVOLUCIONA_A]->(Vaporeon),
     (Eevee)-[:EVOLUCIONA_A]->(Jolteon),
     (Turtwig)-[:EVOLUCIONA_A]->(Torterra),
