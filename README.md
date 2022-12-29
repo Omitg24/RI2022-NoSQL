@@ -26,12 +26,20 @@ De esta forma, mediante los botones de las queries, el usuario podrá visualizar
 ### *Queries implementadas*
 ---
 El proyecto cuenta con 6 queries en total, divididas en los siguientes grupos:
-    * Simples:
-        - Pokemon de Knekro de tipo Electrico.
-        - Pokemon de tipo Agua y que conocen el movimiento Surf.
-    * Intermedias:
-        - Pokemon de tipo Normal, de la región de Kanto y que tienen evolución.
-        - Pokemon cuyos tipos son distintos a los tipos de las evoluciones.
-    * Avanzadas:
-        - Pokemon que conozcan movimientos cuyo tipo sea distinto al propio tipo del Pokemon.
-        - Resumen de un Pokemon mostrando entrenadores, tipo, región, movimientos y evoluciones.
+ * Simples:
+     * Pokemon de Knekro de tipo Electrico.
+     * Pokemon de tipo Agua y que conocen el movimiento Surf.
+ * Intermedias:
+     * Pokemon de tipo Normal, de la región de Kanto y que tienen evolución.
+     * Pokemon cuyos tipos son distintos a los tipos de las evoluciones.
+ * Avanzadas:
+     * Pokemon que conozcan movimientos cuyo tipo sea distinto al propio tipo del Pokemon.
+     * Resumen de un Pokemon mostrando entrenadores, tipo, región, movimientos y evoluciones.
+     
+### *Enlace al proyecto*
+---
+* https://omitg24.github.io/RI2022-NoSQL/Proyecto/
+
+### *Aspecto final del proyecto*
+---
+![imagen](https://user-images.githubusercontent.com/91057639/210013974-07793ed7-0925-4d22-bb3c-70f12d0d9215.png)
