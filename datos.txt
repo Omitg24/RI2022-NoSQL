@@ -211,13 +211,13 @@ CREATE
     (Veneno)-[:ES_EFICAZ]->(Hada),
     (Volador)-[:ES_EFICAZ]->(Planta),
     (Volador)-[:ES_EFICAZ]->(Bicho),
-    (Volador)-[:ES_EFICAZ]->(Lucha)
+  Trapicheo  (Volador)-[:ES_EFICAZ]->(Lucha)
 
 CREATE 
-	(Gigaimpacto)-[:ES_DE_TIPO_TIPO]->(Normal),
+	(Gigaimpacto)-[:ES_DE_TIPO]->(Normal),
     (Hiperrayo)-[:ES_DE_TIPO]->(Normal),
     (Energibola)-[:ES_DE_TIPO]->(Planta),
-    (Drenadoras)-[:ES_DE_TIPO]->(Drenadoras),
+    (Drenadoras)-[:ES_DE_TIPO]->(Planta),
     (Surf)-[:ES_DE_TIPO]->(Agua),
     (Hidrobomba)-[:ES_DE_TIPO]->(Agua),
     (Envite_igneo)-[:ES_DE_TIPO]->(Fuego),
@@ -283,7 +283,7 @@ CREATE
 	(Jarfaiter)-[:ENTRENA]->(Toxicroak),
 	(Jarfaiter)-[:ENTRENA]->(Hitmonchan),
 	(Jarfaiter)-[:ENTRENA]->(Blaziken)
-	
+	    
 CREATE
 	(Empoleon)-[:TIENE_TIPO]->(Agua),
     (Empoleon)-[:TIENE_TIPO]->(Acero),
@@ -321,7 +321,17 @@ CREATE
     (Larvitar)-[:TIENE_TIPO]->(Tierra),
     (Piplup)-[:TIENE_TIPO]->(Agua),
     (Munchlax)-[:TIENE_TIPO]->(Normal),
-    (Grovyle)-[:TIENE_TIPO]->(Planta)
+    (Grovyle)-[:TIENE_TIPO]->(Planta),
+    (Groudon)-[:TIENE_TIPO]->(Fuego),
+    (Groudon)-[:TIENE_TIPO]->(Tierra),
+    (Hitmonchan)-[:TIENE_TIPO]->(Lucha),
+    (Deoxys)-[:TIENE_TIPO]->(Psiquico),
+    (Jirachi)-[:TIENE_TIPO]->(Acero),
+    (Jirachi)-[:TIENE_TIPO]->(Dragon),
+    (Toxicroak)-[:TIENE_TIPO]->(Veneno),
+    (Toxicroak)-[:TIENE_TIPO]->(Lucha),
+    (Blaziken)-[:TIENE_TIPO]->(Lucha),
+    (Blaziken)-[:TIENE_TIPO]->(Fuego)
 
 CREATE 
     (Empoleon)-[:CONOCE]->(Surf),
