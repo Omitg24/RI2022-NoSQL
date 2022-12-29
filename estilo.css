@@ -10,32 +10,9 @@ header {
   padding: 0.9em;
 }
 
-nav{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  column-gap: 1em;
-  row-gap: 1em;
-  background-color: #00468d;
-  color: white;
-  padding: 1em;
-}
-
-nav a {
-  padding: 0.8em;
-  color: black;
-  background-color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 1em;
-}
-
-nav a:hover{
-  color: black;
-  background-color: #f2cf00;
-}
-
 h1 {
+  font-family: Pokemon;
+  color: #f2cf00;
   font-size: 3em;
   text-align: center;
 }
