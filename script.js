@@ -200,8 +200,8 @@ class Pokemon {
     }
 
     consulta6() {
-        var query = '';
-        this.ejecutarConsulta(query);
+        var query = 'MATCH (Jolteon:Pokemon {nombre:"Jolteon"})-[*0..1]-(n) MATCH (n)-[r]->() RETURN n, r';
+        this.viz.renderWithCypher(query);
     }
 
     async consultaG() {
