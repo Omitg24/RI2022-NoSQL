@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 
     <!--Titulo del documento-->
-    <title>Grafo Pokemon</title>
+    <title>Pokédex</title>
     <!-- añadir el elemento link de enlace a la hoja de estilo dentro del <head> del documento html -->
     <link rel="stylesheet" type="text/css" href="estilo.css">
 
@@ -22,53 +22,36 @@
 
 <body>
     <header>
-        <h1>Gestión base de datos Pokemon</h1>
-    </header>
-    <nav>
-        <a href="#consulta1">Consulta 1</a>
-        <a href="#consulta2">Consulta 2</a>
-        <a href="#consulta3">Consulta 3</a>
-        <a href="#consulta4">Consulta 4</a>
-        <a href="#consulta5">Consulta 5</a>
-        <a href="#consulta6">Consulta 6</a>
-        <a href="#consultaG">Introducir Consulta</a>
-    </nav>
+        <h1>Pokédex</h1>
+    </header>    
     <main>
-        <section id ="resultado">
-            <h2>Resultado Query</h2>
+        <div id ="grafo">
+            <div>
+                <input type="button" id="luzAzul" disabled>
+            </div>
             <div id="viz"></div>
-        </section>
-        <section id="consulta1">
-            <h2>Ejecutar Consulta 1</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta1()">
-        </section>
-        <section id="consulta2">
-            <h2>Ejecutar Consulta 2</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta2()">
-        </section>
-        <section id="consulta3">
-            <h2>Ejecutar Consulta 3</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta3()">
-        </section>
-        <section id="consulta4">
-            <h2>Ejecutar Consulta 4</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta4()">
-        </section>
-        <section id="consulta5">
-            <h2>Ejecutar Consulta 5</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta5()">
-        </section>
-        <section id="consulta6">
-            <h2>Ejecutar Consulta 6</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta6()">
-        </section>
-        <section id="consultaG">
-            <h2>Introducir Consulta</h2>
-            <textarea id="query"></textarea>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consultaG()">
-        </section>
+            <div id="imagenes">
+                <img src="https://cdn-icons-png.flaticon.com/512/15/15213.png" alt="Cruceta de control" id = "cruceta">
+                <img src="https://purepng.com/public/uploads/large/purepng.com-audio-speakeraudio-speakersaudiospeakerssound-speaker-17015283436406ekis.png" alt="Altavoz" id = "sonido">
+            </div>
+        </div>
+        <div id="panel">
+            <textarea id="resultado" readonly></textarea>
+            <div id="botones">
+                <input type="button" value="1" onclick="pokemon.consulta1()" class="consultas">
+                <input type="button" value="2" onclick="pokemon.consulta2()" class="consultas">
+                <input type="button" value="3" onclick="pokemon.consulta3()" class="consultas">
+                <input type="button" value="4" onclick="pokemon.consulta4()" class="consultas">
+                <input type="button" value="5" onclick="pokemon.consulta5()" class="consultas">
+                <input type="button" value="6" onclick="pokemon.consulta6()" class="consultas">            
+            </div>
+            <div id="queryPersonalizada">
+                <textarea id="query"></textarea>
+                <input type="button" id="luzAmarilla" disabled>
+            </div>            
+            <input type="button" value="Consulta personalizada" onclick="pokemon.consultaG()" id="personalizada">
+        </div>        
     </main>
     <script src="script.js"></script>
 </body>
-
 </html>
