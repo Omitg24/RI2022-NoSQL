@@ -7,11 +7,18 @@ body {
 header {
   color: white;
   background-color: #00468d;
+  border-radius: 1em;
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: 0.25em;
   padding: 0.9em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;  
 }
 
 h1 {
-  font-family: Pokemon;
   color: #f2cf00;
   font-size: 3em;
   text-align: center;
@@ -22,6 +29,9 @@ main {
   padding: 1em;
   margin-top: 0.5em;
   border-radius: 1em;
+  border-color: #212121;
+  border-style: solid;
+  border-width: 0.25em;
   display: flex;
   flex-direction: row;  
   gap: 1rem;
@@ -36,12 +46,16 @@ input[type="button"]:disabled{
 }
 
 img {
-  height: 7.5vw;
-  width: 7.5vw;
+  max-height: 15vh;
+  max-width: 15vw;
 }
 
 textarea {
+  border-color: #a8a8a8;
+  border-style: solid;
+  border-width: 0.25em;
   padding: 0.5em;
+  color: white;
 }
 
 .consultas{  
@@ -52,10 +66,15 @@ textarea {
   padding-bottom: 1em;    
 }
 
+.imagenes {
+  height: 7.5vh;
+  width: 7.5vh;   
+}
+
 #viz{
   background-color: rgb(215, 215, 215);  
-  height: 30vw;
-  width: 40vw;     
+  height: 40vh;
+  width: 50vh;     
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
@@ -72,10 +91,10 @@ textarea {
 }
 
 #resultado{
-  height: 10vw;
-  color: white;
+  font-size: 1.5em;
   background-color: black;
   border-radius: 1em;
+  height: 15vh;  
 }
 
 #queryPersonalizada {
@@ -87,9 +106,8 @@ textarea {
 
 #query{
   font-size: 1.25em;
-  height: 5vw;
-  width: 30vw;  
-  color: white;
+  height: 5vh;
+  width: 30vh;  
   background-color: black;
   border-radius: 1em;
   flex:90%;
@@ -98,7 +116,7 @@ textarea {
 #panel {
   flex: 50%;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   gap: 1em;
 }
 
@@ -122,23 +140,40 @@ textarea {
 #imagenes {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
-#luzAzul {
-  background-color: #a5bbff;
-  border-radius: 50%;
-  border-color: #786767;
+#logos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#logo {
+  height: 15vh;  
+  max-width: 45vh;
+}
+
+#equipo {
+  border-radius: 1em;
+  border-color: #444444;
   border-style: solid;
-  border-width: 0.5em;  
-  height: 7.5vw;
-  width: 7.5vw;   
+  border-width: 0.25em;
+  height: 10vw; 
+  max-width: 48vw; 
+}
+
+#logoPokedex {
+  height: 7vh;
+  max-width: 30vh;
 }
 
 #luzAmarilla {
   background-color: #ffeb57;
   border-radius: 50%;
-  height: 3vw;
-  width: 3vw; 
+  height: 3vh;
+  width: 3vh; 
   flex:10%;  
 }

@@ -171,6 +171,7 @@ class Pokemon {
         var result = await this.session.run(query);
         var str = this.convertirResultado(result);
         $("#resultado").text(str);
+        console.log(str);
         this.viz.renderWithCypher(query);
     }
 
@@ -200,6 +201,7 @@ class Pokemon {
     }
 
     consulta6() {
+        this.limpiarResultado();
         var query = 'MATCH (Jolteon:Pokemon {nombre:"Jolteon"})-[*0..1]-(n) MATCH (n)-[r]->() RETURN n, r';
         this.viz.renderWithCypher(query);
     }

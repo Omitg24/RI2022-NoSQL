@@ -22,12 +22,24 @@
 
 <body>
     <header>
-        <h1>Pokédex</h1>
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/498.png" alt="Imagen de Tepig">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/570.png" alt="Imagen de Zorua">
+        <div id="logos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" alt="Logo de Pokemon" id="logo">
+            <img src="https://i.pinimg.com/originals/bd/cd/20/bdcd20f5411ee5785889542d303ad4cb.png" alt="Logo de Pokedex" id="logoPokedex">
+        </div>
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/386.png" alt="Imagen de Deoxys">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/254.png" alt="Imagen de Sceptile">
     </header>    
     <main>
         <div id ="grafo">
             <div>
-                <input type="button" id="luzAzul" disabled>
+                <img src="https://i0.wp.com/eltallerdehector.com/wp-content/uploads/2022/06/6420b-pikachu-sentado-png.png?resize=450%2C450&ssl=1" alt="Pikachu izda" class="imagenes">                
+                <img src="https://static.wikia.nocookie.net/espokemon/images/0/02/Pok%C3%A9_Ball_%28Ilustraci%C3%B3n%29.png/revision/latest/scale-to-width-down/350?cb=20090125150654" alt="Pokeball" class="imagenes">
+                <img src="https://static.wikia.nocookie.net/espokemon/images/5/57/Super_Ball_%28Ilustraci%C3%B3n%29.png/revision/latest?cb=20160831125614" alt="Superball" class="imagenes">                
+                <img src="https://static.wikia.nocookie.net/espokemon/images/c/c9/Ultra_Ball_%28Ilustraci%C3%B3n%29.png/revision/latest/scale-to-width-down/350?cb=20090125150713" alt="Ultraball" class="imagenes">
+                <img src="https://static.wikia.nocookie.net/espokemon/images/a/a9/Master_Ball_%28Ilustraci%C3%B3n%29.png/revision/latest?cb=20120802225204" alt="Masterball" class="imagenes">
+                <img src="https://i0.wp.com/eltallerdehector.com/wp-content/uploads/2022/06/6420b-pikachu-sentado-png.png?resize=450%2C450&ssl=1" alt="Pikachu dcha" class="imagenes">
             </div>
             <div id="viz"></div>
             <div id="imagenes">
@@ -36,18 +48,19 @@
             </div>
         </div>
         <div id="panel">
+            <img src="https://gyazo.com/97e3dfdc6c945fea65c92e54b44866d5.png" alt="Equipo pokemon" id="equipo">
             <textarea id="resultado" readonly></textarea>
             <div id="botones">
-                <input type="button" value="1" onclick="pokemon.consulta1()" class="consultas">
-                <input type="button" value="2" onclick="pokemon.consulta2()" class="consultas">
-                <input type="button" value="3" onclick="pokemon.consulta3()" class="consultas">
-                <input type="button" value="4" onclick="pokemon.consulta4()" class="consultas">
-                <input type="button" value="5" onclick="pokemon.consulta5()" class="consultas">
-                <input type="button" value="6" onclick="pokemon.consulta6()" class="consultas">            
+                <input type="button" value="Simple" onclick="pokemon.consulta1()" class="consultas" title="Pokemon de Knekro de tipo Electrico">                
+                <input type="button" value="Intermedia" onclick="pokemon.consulta3()" class="consultas" title="Pokemon de tipo Normal, de la región de Kanto y que tienen evolución">
+                <input type="button" value="Avanzada" onclick="pokemon.consulta5()" class="consultas" title="Pokemon que conozcan movimientos cuyo tipo sea distinto al propio tipo del Pokemon">
+                <input type="button" value="Simple" onclick="pokemon.consulta2()" class="consultas" title="Pokemon de tipo Agua y que conocen el movimiento Surf">
+                <input type="button" value="Intermedia" onclick="pokemon.consulta4()" class="consultas" title="Pokemon cuyos tipos son distintos a los tipos de las evoluciones">                
+                <input type="button" value="Avanzada" onclick="pokemon.consulta6()" class="consultas" title="Resumen de un Pokemon mostrando entrenadores, tipo, región, movimientos y evoluciones">            
             </div>
             <div id="queryPersonalizada">
                 <textarea id="query"></textarea>
-                <input type="button" id="luzAmarilla" disabled>
+                <input type="button" value=" " id="luzAmarilla" disabled>
             </div>            
             <input type="button" value="Consulta personalizada" onclick="pokemon.consultaG()" id="personalizada">
         </div>        

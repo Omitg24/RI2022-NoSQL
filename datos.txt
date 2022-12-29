@@ -211,7 +211,7 @@ CREATE
     (Veneno)-[:ES_EFICAZ]->(Hada),
     (Volador)-[:ES_EFICAZ]->(Planta),
     (Volador)-[:ES_EFICAZ]->(Bicho),
-  Trapicheo  (Volador)-[:ES_EFICAZ]->(Lucha)
+    (Volador)-[:ES_EFICAZ]->(Lucha)
 
 CREATE 
 	(Gigaimpacto)-[:ES_DE_TIPO]->(Normal),
@@ -454,4 +454,3 @@ CREATE
     (Blaziken)-[:CONOCE]->(Envite_igneo),
     (Blaziken)-[:CONOCE]->(Sofoco),
     (Blaziken)-[:CONOCE]->(A_bocajarro)
-
