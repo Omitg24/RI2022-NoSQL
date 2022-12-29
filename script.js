@@ -8,37 +8,61 @@ class Pokemon {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male"
+            },visConfig: {
+                autoResize: true,
+                edges: {
+                    arrows: {
+                        to: {enabled: true}
+                    }
+                },
+                physics: {
+                    forceAtlas2Based: {
+                        gravitationalConstant: -26,
+                        centralGravity: 0.005,
+                        springLength: 230,
+                        springConstant: 0.18,
+                        avoidOverlap: 1.5
+                    },
+                    maxVelocity: 10,
+                    solver: 'forceAtlas2Based',
+                    timestep: 0.35,
+                    stabilization: {
+                        enabled: true,
+                        iterations: 1000,
+                        updateInterval: 25
+                    }
+                }
             },
             labels: {
                 Pokemon: {
                     label: "nombre",
                     caption: "nombre",
                     value: "pagerank",
-                    group: "Pink"
+                    group: "community"
                 },
                 Movimiento: {
                     label: "nombre",
                     caption: "nombre",
                     value: "pagerank",
-                    group: "Magenta"
+                    group: "community"
                 },
                 Tipo: {
                     label: "nombre",
                     caption: "nombre",
                     value: "pagerank",
-                    group: "Red"
+                    group: "community"
                 },
                 Region: {
                     label: "nombre",
                     caption: "nombre",
                     value: "pagerank",
-                    group: "Green"
+                    group: "community"
                 },
                 Entrenador: {
                     label: "nombre",
                     caption: "nombre",
                     value: "pagerank",
-                    group: "Blue"
+                    group: "community"
                 }
             },
             relationships: {
@@ -130,50 +154,79 @@ class Pokemon {
     }
 
     limpiarResultado() {
-        $("#resultado p ").remove();
+        $("#resultado").text("");
     }
 
     mostrarResultado() {
-        this.viz.reload();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    convertirResultado(result){
+        var str = "";
+        for(var r = 0; r<result.records.length;r++){
+            str+="Nombre: "+result.records[r]._fields[0].properties.nombre+
+                ", Número: "+result.records[r]._fields[0].properties.numero+"\n";
+        }
+        return str;
+    }
+
     async consulta1() {
+        var query = 'MATCH (:Entrenador{nombre:"Knekro"})-[:ENTRENA]->(n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Electrico"}) RETURN n';
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Entrenador{nombre:'Jincho'}) RETURN n ");
-        console.log(result);
-        this.viz.renderWithCypher("MATCH (n:Entrenador{nombre:'Jincho'}) RETURN n ");
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
         this.mostrarResultado();
     }
 
     async consulta2() {
+        var query = 'MATCH (n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Agua"}) MERGE (:Pokemon)-[:CONOCE]->(:Movimiento{nombre:"Surf"}) RETURN DISTINCT n';
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
-        this.viz.renderWithCypher("MATCH (n:Person{name:'Jincho'}) RETURN n ");
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
         this.mostrarResultado();
     }
 
     async consulta3() {
+        var query = '';
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
         this.mostrarResultado();
     }
 
     async consulta4() {
+        var query = 'MATCH (n:Pokemon)-[:EVOLUCIONA_A]->(p:Pokemon),(p)-[:TIENE_TIPO]->(t:Tipo) WHERE NOT (n)-[:TIENE_TIPO]->(:Tipo{nombre:t.nombre}) RETURN DISTINCT n';
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
         this.mostrarResultado();
     }
 
     async consulta5() {
+        var query = '';
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
         this.mostrarResultado();
     }
 
     async consulta6() {
+        var query = '';
         this.limpiarResultado();
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        var result = await this.session.run(query);
+        var str = this.convertirResultado(result);
+        $("#resultado").text(str);
+        this.viz.renderWithCypher(query);
         this.mostrarResultado();
     }
 
@@ -185,7 +238,7 @@ class Pokemon {
             var result = await this.session.run(query);
             this.viz.renderWithCypher(query);
         } catch (error) {
-            $("#resultado").append("<p>ERROR: Introduce una consulta correcta</p>");
+            $("#resultado").text("<p>ERROR: Introduce una consulta correcta</p>");
         } finally {
             this.mostrarResultado();
         }
