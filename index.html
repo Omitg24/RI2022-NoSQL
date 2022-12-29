@@ -17,7 +17,7 @@
 
     <script src="https://unpkg.com/neovis.js@2.0.2"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
 </head>
 
 <body>
@@ -31,9 +31,10 @@
         <a href="#consulta4">Consulta 4</a>
         <a href="#consulta5">Consulta 5</a>
         <a href="#consulta6">Consulta 6</a>
+        <a href="#consultaG">Introducir Consulta</a>
     </nav>
     <main>
-        <section>
+        <section id ="resultado">
             <h2>Resultado Query</h2>
             <div id="viz"></div>
         </section>
@@ -59,7 +60,12 @@
         </section>
         <section id="consulta6">
             <h2>Ejecutar Consulta 6</h2>
-            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta()">
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consulta6()">
+        </section>
+        <section id="consultaG">
+            <h2>Introducir Consulta</h2>
+            <textarea id="query"></textarea>
+            <input type="button" value="Realizar Consulta" onclick="pokemon.consultaG()">
         </section>
     </main>
     <script src="script.js"></script>

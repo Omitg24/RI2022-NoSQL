@@ -10,18 +10,61 @@ class Pokemon {
                 serverPassword: "boom-selections-male"
             },
             labels: {
-                Person: {
-                    label: "name",
+                "Pokemon": {
+                    label: "nombre",
+                    value: "pagerank",
+                    group: "community"
+                }, 
+                "Movimiento": {
+                    label: "nombre",
+                    value: "pagerank",
+                    group: "community"
+                }, 
+                "Tipo": {
+                    label: "nombre",
+                    value: "pagerank",
+                    group: "community"
+                }, 
+                "Region": {
+                    label: "nombre",
+                    value: "pagerank",
+                    group: "community"
+                }, 
+                "Entrenador": {
+                    label: "nombre",
                     value: "pagerank",
                     group: "community"
                 }
             },
             relationships: {
-                INTERACTS: {
-                    value: "weight"
-                }
-            },
-            initialCypher: "MATCH (n:Person{name:'Jincho'}) RETURN n"
+                "EVOLUCIONA_A":{
+                    label: true
+                },
+                "COMBATE_CONTRA":{
+                    label: true
+                },
+                "LIDERA":{
+                    label: true
+                },
+                "PERTENECE":{
+                    label: true
+                },
+                "ES_EFICAZ":{
+                    label: true
+                },
+                "ES_DE_TIPO":{
+                    label: true
+                },
+                "ENTRENA":{
+                    label: true
+                },
+                "TIENE_TIPO":{
+                    label: true
+                },
+                "CONOCE":{
+                    label: true
+                }        
+            }
         };
 
         this.viz = new NeoVis.default(config);
@@ -40,35 +83,67 @@ class Pokemon {
         }
     }
 
-    async consulta1() {
-        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
-        console.log(result);
-        this.viz.renderWithCypher("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+    limpiarResultado(){
+        $("#resultado p ").remove();
+    }
+
+    mostrarResultado(){
         this.viz.reload();
+        this.viz.stabilize();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async consulta1() {
+        this.limpiarResultado();
+        var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        this.viz.renderWithCypher("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        this.mostrarResultado();
     }
 
     async consulta2() {
-
+        this.limpiarResultado();
         var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
         this.viz.renderWithCypher("MATCH (n:Person{name:'Jincho'}) RETURN n ");
-        this.viz.reload();
+        this.mostrarResultado();
     }
 
     async consulta3() {
+        this.limpiarResultado();
         var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        this.mostrarResultado();
     }
 
     async consulta4() {
+        this.limpiarResultado();
         var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        this.mostrarResultado();
     }
 
     async consulta5() {
+        this.limpiarResultado();
         var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
-
+        this.mostrarResultado();
     }
 
     async consulta6() {
+        this.limpiarResultado();
         var result = await this.session.run("MATCH (n:Person{name:'Foyone'}) RETURN n ");
+        this.mostrarResultado();
+    }
+
+    async consultaG() {
+        this.limpiarResultado();
+        var query = $("#query").val();
+        if (query.replace(/\s/g, "") == "") return;
+        try {
+            var result = await this.session.run(query);
+            this.viz.renderWithCypher(query);
+        }catch(error){
+            $("#resultado").append("<p>ERROR: Introduce una consulta correcta</p>");
+        }finally{
+            this.mostrarResultado();
+        }
+
     }
 }
 
