@@ -185,7 +185,7 @@ class Pokemon {
     }
 
     consulta3() {
-        var query = '';
+        var query = 'MATCH (p:Pokemon)-[:PERTENECE]->(r:Region) WHERE r.nombre="Kanto" AND (p)-[:TIENE_TIPO]->(:Tipo{nombre:"Normal"}) AND (p)-[:EVOLUCIONA_A]->(:Pokemon) RETURN DISTINCT p';
         this.ejecutarConsulta(query);
     }
 

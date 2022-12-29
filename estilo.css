@@ -27,6 +27,14 @@ main {
   gap: 1rem;
 }
 
+input[type="button"]{
+  cursor: pointer;
+}
+
+input[type="button"]:disabled{
+  cursor: default;
+}
+
 img {
   height: 7.5vw;
   width: 7.5vw;
