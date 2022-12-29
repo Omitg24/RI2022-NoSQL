@@ -7,7 +7,8 @@ class Pokemon {
             neo4j: {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
-                serverPassword: "boom-selections-male"
+                serverPassword: "boom-selections-male",
+                encrypted: "ENCRYPTION_ON"
             },
             labels: {
                 "Pokemon": {
