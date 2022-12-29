@@ -141,7 +141,7 @@ class Pokemon {
     }
 
     async conectarDriver() {
-        const driver = neo4j.driver("bolt+ssc://35.170.182.177:7687"
+        const driver = neo4j.driver("bolt://35.170.182.177:7687"
             , neo4j.auth.basic("neo4j", "boom-selections-male"))
         try {
             await driver.verifyConnectivity();
