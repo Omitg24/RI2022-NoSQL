@@ -8,8 +8,7 @@ class Pokemon {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male",
-                encrypted: 'ENCRYPTION_ON',
-                trust: 'TRUST_SYSTEM_CA_SIGNED_CERTIFICATES'
+                encrypted: false
             }, visConfig: {
                 autoResize: true,
                 edges: {
