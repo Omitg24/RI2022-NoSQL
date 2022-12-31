@@ -538,11 +538,3 @@ MATCH((p:Pokemon)-[:CONOCE]->(m:Movimiento)-[:ES_DE_TIPO]-(t:Tipo)) WHERE NOT EX
 //table
 
 //graph_result
-
-== Conclusion
-
-This GraphGist showed how to do simple social network analysis using the 
-Star Wars social network that I extracted from the film scripts. We looked at how to 
-extract and summarize sub-networks for individual episodes, and for specific characters. 
-Overall, this was my first experience with Neo4j and it was very easy to create the network and 
-extract interesting information from the database.
