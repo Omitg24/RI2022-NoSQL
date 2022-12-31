@@ -4,6 +4,8 @@ class Pokemon {
         this.conectarDriver();
         var config = {
             containerId: "viz",
+            encrypted: 'ENCRYPTION_ON',
+            trust: 'TRUST_SYSTEM_CA_SIGNED_CERTIFICATES',
             neo4j: {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
@@ -132,9 +134,7 @@ class Pokemon {
             },
             arrows: true,
             hierarchical: true,
-            hierarchical_sort_method: 'directed',
-            encrypted: 'ENCRYPTION_ON',
-            trust: 'TRUST_ALL_CERTIFICATES'
+            hierarchical_sort_method: 'directed'
         }
 
         this.viz = new NeoVis.default(config);
