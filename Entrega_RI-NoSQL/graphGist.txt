@@ -1,0 +1,540 @@
+= Pokemon
+:author: Israel, Omar, David, Adrián
+
+Grafo basado en el videojuego Pokemon, expresando las principales relaciones de este
+
+Los pokemons tienen un tipo, un entrenador, un conjunto de movimientos y pertenecen a una región.
+Además estos pueden ser entrenados por un entrenador, que puede tener varios pokemons en su equipo, este entrenador 
+puede también ser el lider de una región y combatir contra otros entrenadores.
+Hay ciertos tipos que son más eficaces contra otro conjunto de tipos, por ejemplo agua es eficaz contra fuego.
+
+== Setup 
+
+Ahora procedemos a añadir todos los pokemons, entrenadores, regiones, movimientos, tipos y las relaciones entre ellos
+
+//setup
+//hide
+[source,cypher]
+----
+CREATE (Empoleon:Pokemon {nombre:'Empoleon', numero:395})
+CREATE (Emboar:Pokemon {nombre:'Emboar', numero:500})
+CREATE (Zekrom:Pokemon {nombre:'Zekrom', numero:644})
+CREATE (Rayquaza:Pokemon {nombre:'Rayquaza', numero:384})
+CREATE (Vaporeon:Pokemon {nombre:'Vaporeon', numero:134})
+CREATE (Tyranitar:Pokemon {nombre:'Tyranitar', numero:248})
+CREATE (Snorlax:Pokemon {nombre:'Snorlax', numero:143})
+CREATE (Starmie:Pokemon {nombre:'Starmie', numero:121})
+CREATE (Zapdos:Pokemon {nombre:'Zapdos', numero:145})
+CREATE (Rhydon:Pokemon {nombre:'Rhydon', numero:112})
+CREATE (Jolteon:Pokemon {nombre:'Jolteon', numero:135})
+CREATE (Alakazam:Pokemon {nombre:'Alakazam', numero:65})
+CREATE (Sceptile:Pokemon {nombre:'Sceptile', numero:254})
+CREATE (Sudowoodo:Pokemon {nombre:'Sudowoodo', numero:185})
+CREATE (Amongus:Pokemon {nombre:'Amongus', numero:591})
+CREATE (Jynx:Pokemon {nombre:'Jynx', numero:124})
+CREATE (Shaymin:Pokemon {nombre:'Shaymin', numero:492})
+CREATE (Torterra:Pokemon {nombre:'Torterra', numero:389})
+CREATE (Turtwig:Pokemon {nombre:'Turtwig', numero:387})
+CREATE (Eevee:Pokemon {nombre:'Eevee', numero:133})
+CREATE (Larvitar:Pokemon {nombre:'Larvitar', numero:247})
+CREATE (Piplup:Pokemon {nombre:'Piplup', numero:393})
+CREATE (Munchlax:Pokemon {nombre:'Munchlax', numero:142})
+CREATE (Grovyle:Pokemon {nombre:'Grovyle', numero:253})
+CREATE (Deoxys:Pokemon {nombre:'Deoxys', numero:386})
+CREATE (Groudon:Pokemon {nombre:'Groudon', numero:383})
+CREATE (Jirachi:Pokemon {nombre:'Jirachi', numero:385})
+CREATE (Hitmonchan:Pokemon {nombre:'Hitmonchan', numero:107})
+CREATE (Toxicroak:Pokemon {nombre:'Toxicroak', numero:454})
+CREATE (Blaziken:Pokemon {nombre:'Blaziken', numero:257})
+
+CREATE
+    (Gigaimpacto:Movimiento {nombre:'Gigaimpacto'}),
+    (Hiperrayo:Movimiento {nombre:'Hiperrayo'}),
+    (Energibola:Movimiento {nombre:'Energibola'}),
+    (Drenadoras:Movimiento {nombre:'Drenadoras'}),
+    (Surf:Movimiento {nombre:'Surf'}),
+    (Hidrobomba:Movimiento {nombre:'Hidrobomba'}),
+    (Envite_igneo:Movimiento {nombre:'Envite Igneo'}),
+    (Sofoco:Movimiento {nombre:'Sofoco'}),
+    (Cabeza_de_hierro:Movimiento {nombre:'Cabeza de hierro'}),
+    (Ala_de_acero:Movimiento {nombre:'Ala de acero'}),
+    (Zumbido:Movimiento {nombre:'Zumbido'}),
+    (Chupavidas:Movimiento {nombre:'Chupavidas'}),
+    (Garra_dragon:Movimiento {nombre:'Garra Dragon'}),
+    (Cometa_draco:Movimiento {nombre:'Cometa Draco'}),
+    (Rayo:Movimiento {nombre:'Rayo'}),
+    (Voltiocambio:Movimiento {nombre:'Voltiocambio'}),
+    (Garra_umbria:Movimiento {nombre:'Garra Umbria'}),
+    (Bola_sombra:Movimiento {nombre:'Bola Sombra'}),
+    (Robo:Movimiento {nombre:'Robo'}),
+    (Persecucion:Movimiento {nombre:'Persecucion'}),
+    (Trapicheo:Movimiento {nombre:'Trapicheo'}),
+    (Paliza:Movimiento {nombre:'Paliza'}),
+    (Psicopatada:Movimiento {nombre:'Psicopatada'}),
+    (A_bocajarro:Movimiento {nombre:'A bocajarro'}),
+    (Espacio_raro:Movimiento {nombre:'Espacio raro'}),
+    (Paz_mental:Movimiento {nombre:'Paz_mental'}),
+    (Brillo_magico:Movimiento {nombre:'Brillo Magico'}),
+    (Cura_floral:Movimiento {nombre:'Cura floral'}),
+    (Nieve_polvo:Movimiento {nombre:'Nieve polvo'}),
+    (Colmillo_hielo:Movimiento {nombre:'Colmillo Hielo'}),
+    (Pedrada:Movimiento {nombre:'Pedrada'}),
+    (Romperrocas:Movimiento {nombre:'Romperrocas'}),
+    (Vuelo:Movimiento {nombre:'Vuelo'}),
+    (Despejar:Movimiento {nombre:'Despejar'}),
+    (Eructo:Movimiento {nombre:'Eructo'}),
+    (Terremoto:Movimiento {nombre:'Terremoto'}),
+    (Fertilizante:Movimiento {nombre:'Fertilizante'})
+
+CREATE (Acero:Tipo {nombre:'Acero'})
+CREATE (Agua:Tipo {nombre:'Agua'})
+CREATE (Bicho:Tipo {nombre:'Bicho'})
+CREATE (Dragon:Tipo {nombre:'Dragon'})
+CREATE (Electrico:Tipo {nombre:'Electrico'})
+CREATE (Fantasma:Tipo {nombre:'Fantasma'})
+CREATE (Fuego:Tipo {nombre:'Fuego'})
+CREATE (Hada:Tipo {nombre:'Hada'})
+CREATE (Hielo:Tipo {nombre:'Hielo'})
+CREATE (Lucha:Tipo {nombre:'Lucha'})
+CREATE (Normal:Tipo {nombre:'Normal'})
+CREATE (Planta:Tipo {nombre:'Planta'})
+CREATE (Psiquico:Tipo {nombre:'Psiquico'})
+CREATE (Roca:Tipo {nombre:'Roca'})
+CREATE (Siniestro:Tipo {nombre:'Siniestro'})
+CREATE (Tierra:Tipo {nombre:'Tierra'})
+CREATE (Veneno:Tipo {nombre:'Veneno'})
+CREATE (Volador:Tipo {nombre:'Volador'})
+
+CREATE (Kanto:Region {nombre:'Kanto'})
+CREATE (Johto:Region {nombre:'Johto'})
+CREATE (Hoenn:Region {nombre:'Hoenn'})
+CREATE (Sinnoh:Region {nombre:'Sinnoh'})
+CREATE (Teselia:Region {nombre:'Teselia'})
+CREATE (Kalos:Region {nombre:'Kalos'})
+CREATE (Alola:Region {nombre:'Alola'})
+CREATE (Galar:Region {nombre:'Galar'})
+CREATE (Paldea:Region {nombre:'Paldea'})
+
+CREATE (Omar:Entrenador {nombre:'Omar'})
+CREATE (Jincho:Entrenador {nombre:'Jincho'})
+CREATE (Knekro:Entrenador {nombre:'Knekro'})
+CREATE (Winoloko:Entrenador {nombre:'Winoloko'})
+CREATE (Jarfaiter:Entrenador {nombre:'Jarfaiter'})
+
+CREATE 
+    (Omar)-[:COMBATE_CONTRA]->(Knekro),
+    (Knekro)-[:COMBATE_CONTRA]->(Omar),
+    (Winoloko)-[:COMBATE_CONTRA]->(Jarfaiter),
+    (Jarfaiter)-[:COMBATE_CONTRA]->(Winoloko),
+    (Winoloko)-[:COMBATE_CONTRA]->(Jincho),
+    (Jincho)-[:COMBATE_CONTRA]->(Winoloko)
+
+CREATE 
+    (Piplup)-[:EVOLUCIONA_A]->(Empoleon),
+    (Eevee)-[:EVOLUCIONA_A]->(Vaporeon),
+    (Eevee)-[:EVOLUCIONA_A]->(Jolteon),
+    (Turtwig)-[:EVOLUCIONA_A]->(Torterra),
+    (Larvitar)-[:EVOLUCIONA_A]->(Tyranitar),
+    (Munchlax)-[:EVOLUCIONA_A]->(Snorlax),
+    (Grovyle)-[:EVOLUCIONA_A]->(Sceptile)
+
+CREATE
+    (Knekro)-[:LIDERA]->(Kanto),
+    (Knekro)-[:LIDERA]->(Johto),
+    (Winoloko)-[:LIDERA]->(Alola),
+    (Omar)-[:LIDERA]->(Teselia),
+    (Omar)-[:LIDERA]->(Sinnoh),
+    (Omar)-[:LIDERA]->(Alola)
+
+CREATE 
+    (Empoleon)-[:PERTENECE]->(Sinnoh),
+    (Emboar)-[:PERTENECE]->(Teselia),
+    (Zekrom)-[:PERTENECE]->(Teselia),
+    (Rayquaza)-[:PERTENECE]->(Hoenn),
+    (Vaporeon)-[:PERTENECE]->(Johto),
+    (Tyranitar)-[:PERTENECE]->(Johto),
+    (Snorlax)-[:PERTENECE]->(Kanto),
+    (Starmie)-[:PERTENECE]->(Kanto),
+    (Zapdos)-[:PERTENECE]->(Kanto),
+    (Rhydon)-[:PERTENECE]->(Kanto),
+    (Jolteon)-[:PERTENECE]->(Johto),
+    (Alakazam)-[:PERTENECE]->(Johto),
+    (Sceptile)-[:PERTENECE]->(Hoenn),
+    (Sudowoodo)-[:PERTENECE]->(Johto),
+    (Amongus)-[:PERTENECE]->(Teselia),
+    (Jynx)-[:PERTENECE]->(Johto),
+    (Shaymin)-[:PERTENECE]->(Sinnoh),
+    (Torterra)-[:PERTENECE]->(Sinnoh),
+    (Turtwig)-[:PERTENECE]->(Sinnoh),
+    (Eevee)-[:PERTENECE]->(Johto),
+    (Larvitar)-[:PERTENECE]->(Johto),
+    (Piplup)-[:PERTENECE]->(Sinnoh),
+    (Munchlax)-[:PERTENECE]->(Kanto),
+    (Grovyle)-[:PERTENECE]->(Hoenn),
+    (Deoxys)-[:PERTENECE]->(Hoenn),
+    (Groudon)-[:PERTENECE]->(Hoenn),
+    (Jirachi)-[:PERTENECE]->(Hoenn),
+    (Hitmonchan)-[:PERTENECE]->(Johto),
+    (Toxicroak)-[:PERTENECE]->(Sinnoh),
+    (Blaziken)-[:PERTENECE]->(Hoenn)
+
+CREATE 
+    (Acero)-[:ES_EFICAZ]->(Hielo),
+    (Acero)-[:ES_EFICAZ]->(Roca),
+    (Acero)-[:ES_EFICAZ]->(Hada),
+    (Agua)-[:ES_EFICAZ]->(Roca),
+    (Agua)-[:ES_EFICAZ]->(Tierra),
+    (Agua)-[:ES_EFICAZ]->(Fuego),
+    (Bicho)-[:ES_EFICAZ]->(Planta),
+    (Bicho)-[:ES_EFICAZ]->(Psiquico),
+    (Bicho)-[:ES_EFICAZ]->(Siniestro),
+    (Dragon)-[:ES_EFICAZ]->(Dragon),
+    (Electrico)-[:ES_EFICAZ]->(Volador),
+    (Electrico)-[:ES_EFICAZ]->(Agua),
+    (Fantasma)-[:ES_EFICAZ]->(Fantasma),
+    (Fantasma)-[:ES_EFICAZ]->(Psiquico),
+    (Fuego)-[:ES_EFICAZ]->(Acero),
+    (Fuego)-[:ES_EFICAZ]->(Hielo),
+    (Fuego)-[:ES_EFICAZ]->(Planta),
+    (Fuego)-[:ES_EFICAZ]->(Bicho),
+    (Hada)-[:ES_EFICAZ]->(Lucha),
+    (Hada)-[:ES_EFICAZ]->(Dragon),
+    (Hada)-[:ES_EFICAZ]->(Siniestro),
+    (Hielo)-[:ES_EFICAZ]->(Volador),
+    (Hielo)-[:ES_EFICAZ]->(Planta),
+    (Hielo)-[:ES_EFICAZ]->(Tierra),
+    (Hielo)-[:ES_EFICAZ]->(Dragon),
+    (Lucha)-[:ES_EFICAZ]->(Acero),
+    (Lucha)-[:ES_EFICAZ]->(Hielo),
+    (Lucha)-[:ES_EFICAZ]->(Normal),
+    (Lucha)-[:ES_EFICAZ]->(Roca),
+    (Lucha)-[:ES_EFICAZ]->(Siniestro),
+    (Planta)-[:ES_EFICAZ]->(Agua),
+    (Planta)-[:ES_EFICAZ]->(Roca),
+    (Planta)-[:ES_EFICAZ]->(Tierra),
+    (Psiquico)-[:ES_EFICAZ]->(Lucha),
+    (Psiquico)-[:ES_EFICAZ]->(Veneno),
+    (Roca)-[:ES_EFICAZ]->(Volador),
+    (Roca)-[:ES_EFICAZ]->(Hielo),
+    (Roca)-[:ES_EFICAZ]->(Fuego),
+    (Roca)-[:ES_EFICAZ]->(Bicho),
+    (Siniestro)-[:ES_EFICAZ]->(Psiquico),
+    (Siniestro)-[:ES_EFICAZ]->(Fantasma),
+    (Tierra)-[:ES_EFICAZ]->(Acero),
+    (Tierra)-[:ES_EFICAZ]->(Electrico),
+    (Tierra)-[:ES_EFICAZ]->(Roca),
+    (Tierra)-[:ES_EFICAZ]->(Fuego),
+    (Tierra)-[:ES_EFICAZ]->(Psiquico),
+    (Veneno)-[:ES_EFICAZ]->(Planta),
+    (Veneno)-[:ES_EFICAZ]->(Hada),
+    (Volador)-[:ES_EFICAZ]->(Planta),
+    (Volador)-[:ES_EFICAZ]->(Bicho),
+    (Volador)-[:ES_EFICAZ]->(Lucha)
+
+CREATE 
+	(Gigaimpacto)-[:ES_DE_TIPO]->(Normal),
+    (Hiperrayo)-[:ES_DE_TIPO]->(Normal),
+    (Energibola)-[:ES_DE_TIPO]->(Planta),
+    (Drenadoras)-[:ES_DE_TIPO]->(Planta),
+    (Surf)-[:ES_DE_TIPO]->(Agua),
+    (Hidrobomba)-[:ES_DE_TIPO]->(Agua),
+    (Envite_igneo)-[:ES_DE_TIPO]->(Fuego),
+    (Sofoco)-[:ES_DE_TIPO]->(Fuego),
+    (Cabeza_de_hierro)-[:ES_DE_TIPO]->(Acero),
+    (Ala_de_acero)-[:ES_DE_TIPO]->(Acero),
+    (Zumbido)-[:ES_DE_TIPO]->(Bicho),
+    (Chupavidas)-[:ES_DE_TIPO]->(Bicho),
+    (Garra_dragon)-[:ES_DE_TIPO]->(Dragon),
+    (Cometa_draco)-[:ES_DE_TIPO]->(Dragon),
+    (Rayo)-[:ES_DE_TIPO]->(Electrico),
+    (Voltiocambio)-[:ES_DE_TIPO]->(Electrico),
+    (Garra_umbria)-[:ES_DE_TIPO]->(Fantasma),
+    (Bola_sombra)-[:ES_DE_TIPO]->(Fantasma),
+    (Robo)-[:ES_DE_TIPO]->(Siniestro),
+    (Persecucion)-[:ES_DE_TIPO]->(Siniestro),
+    (Trapicheo)-[:ES_DE_TIPO]->(Siniestro),
+    (Paliza)-[:ES_DE_TIPO]->(Lucha),
+    (Psicopatada)-[:ES_DE_TIPO]->(Lucha),
+    (A_bocajarro)-[:ES_DE_TIPO]->(Lucha),
+    (Espacio_raro)-[:ES_DE_TIPO]->(Psiquico),
+    (Paz_mental)-[:ES_DE_TIPO]->(Psiquico),
+    (Brillo_magico)-[:ES_DE_TIPO]->(Hada),
+    (Cura_floral)-[:ES_DE_TIPO]->(Hada),
+    (Nieve_polvo)-[:ES_DE_TIPO]->(Hielo),
+    (Colmillo_hielo)-[:ES_DE_TIPO]->(Hielo),
+    (Pedrada)-[:ES_DE_TIPO]->(Roca),
+    (Romperrocas)-[:ES_DE_TIPO]->(Roca),
+    (Vuelo)-[:ES_DE_TIPO]->(Volador),
+    (Despejar)-[:ES_DE_TIPO]->(Volador),
+    (Terremoto)-[:ES_DE_TIPO]->(Tierra),
+    (Fertilizante)-[:ES_DE_TIPO]->(Tierra),
+    (Eructo)-[:ES_DE_TIPO]->(Veneno)
+	
+CREATE
+	(Omar)-[:ENTRENA]->(Empoleon),
+	(Omar)-[:ENTRENA]->(Emboar),
+	(Omar)-[:ENTRENA]->(Zekrom),
+	(Omar)-[:ENTRENA]->(Rayquaza),
+	(Omar)-[:ENTRENA]->(Vaporeon),
+	(Omar)-[:ENTRENA]->(Tyranitar),
+	(Jincho)-[:ENTRENA]->(Sceptile),
+	(Jincho)-[:ENTRENA]->(Sudowoodo),
+	(Jincho)-[:ENTRENA]->(Amongus),
+	(Jincho)-[:ENTRENA]->(Jynx),
+	(Jincho)-[:ENTRENA]->(Shaymin),
+	(Jincho)-[:ENTRENA]->(Torterra),
+	(Knekro)-[:ENTRENA]->(Snorlax),
+	(Knekro)-[:ENTRENA]->(Starmie),
+	(Knekro)-[:ENTRENA]->(Zapdos),
+	(Knekro)-[:ENTRENA]->(Rhydon),
+	(Knekro)-[:ENTRENA]->(Jolteon),
+	(Knekro)-[:ENTRENA]->(Alakazam),
+	(Winoloko)-[:ENTRENA]->(Turtwig),
+	(Winoloko)-[:ENTRENA]->(Eevee),
+	(Winoloko)-[:ENTRENA]->(Larvitar),
+	(Winoloko)-[:ENTRENA]->(Piplup),
+	(Winoloko)-[:ENTRENA]->(Munchlax),
+	(Winoloko)-[:ENTRENA]->(Grovyle),
+	(Jarfaiter)-[:ENTRENA]->(Jirachi),
+	(Jarfaiter)-[:ENTRENA]->(Deoxys),
+	(Jarfaiter)-[:ENTRENA]->(Groudon),
+	(Jarfaiter)-[:ENTRENA]->(Toxicroak),
+	(Jarfaiter)-[:ENTRENA]->(Hitmonchan),
+	(Jarfaiter)-[:ENTRENA]->(Blaziken)
+	    
+CREATE
+	(Empoleon)-[:TIENE_TIPO]->(Agua),
+    (Empoleon)-[:TIENE_TIPO]->(Acero),
+    (Emboar)-[:TIENE_TIPO]->(Fuego),
+    (Emboar)-[:TIENE_TIPO]->(Lucha),
+    (Zekrom)-[:TIENE_TIPO]->(Dragon),
+    (Zekrom)-[:TIENE_TIPO]->(Electrico),
+    (Rayquaza)-[:TIENE_TIPO]->(Dragon),
+    (Rayquaza)-[:TIENE_TIPO]->(Volador),
+    (Vaporeon)-[:TIENE_TIPO]->(Agua),
+    (Tyranitar)-[:TIENE_TIPO]->(Roca),
+    (Tyranitar)-[:TIENE_TIPO]->(Siniestro),
+    (Snorlax)-[:TIENE_TIPO]->(Normal),
+    (Starmie)-[:TIENE_TIPO]->(Psiquico),
+    (Starmie)-[:TIENE_TIPO]->(Agua),
+    (Zapdos)-[:TIENE_TIPO]->(Electrico),
+    (Zapdos)-[:TIENE_TIPO]->(Volador),
+    (Rhydon)-[:TIENE_TIPO]->(Tierra),
+    (Rhydon)-[:TIENE_TIPO]->(Roca),
+    (Jolteon)-[:TIENE_TIPO]->(Electrico),
+    (Alakazam)-[:TIENE_TIPO]->(Psiquico),
+    (Sceptile)-[:TIENE_TIPO]->(Planta),
+    (Sudowoodo)-[:TIENE_TIPO]->(Planta),
+    (Sudowoodo)-[:TIENE_TIPO]->(Roca),
+    (Amongus)-[:TIENE_TIPO]->(Veneno),
+    (Amongus)-[:TIENE_TIPO]->(Planta),
+    (Jynx)-[:TIENE_TIPO]->(Psiquico),
+    (Jynx)-[:TIENE_TIPO]->(Hielo),
+    (Shaymin)-[:TIENE_TIPO]->(Planta),
+    (Torterra)-[:TIENE_TIPO]->(Planta),
+    (Torterra)-[:TIENE_TIPO]->(Tierra),
+    (Turtwig)-[:TIENE_TIPO]->(Planta),
+    (Eevee)-[:TIENE_TIPO]->(Normal),
+    (Larvitar)-[:TIENE_TIPO]->(Roca),
+    (Larvitar)-[:TIENE_TIPO]->(Tierra),
+    (Piplup)-[:TIENE_TIPO]->(Agua),
+    (Munchlax)-[:TIENE_TIPO]->(Normal),
+    (Grovyle)-[:TIENE_TIPO]->(Planta),
+    (Groudon)-[:TIENE_TIPO]->(Fuego),
+    (Groudon)-[:TIENE_TIPO]->(Tierra),
+    (Hitmonchan)-[:TIENE_TIPO]->(Lucha),
+    (Deoxys)-[:TIENE_TIPO]->(Psiquico),
+    (Jirachi)-[:TIENE_TIPO]->(Acero),
+    (Jirachi)-[:TIENE_TIPO]->(Dragon),
+    (Toxicroak)-[:TIENE_TIPO]->(Veneno),
+    (Toxicroak)-[:TIENE_TIPO]->(Lucha),
+    (Blaziken)-[:TIENE_TIPO]->(Lucha),
+    (Blaziken)-[:TIENE_TIPO]->(Fuego)
+
+CREATE 
+    (Empoleon)-[:CONOCE]->(Surf),
+    (Empoleon)-[:CONOCE]->(Hidrobomba),
+    (Empoleon)-[:CONOCE]->(Cabeza_de_hierro),
+    (Empoleon)-[:CONOCE]->(Ala_de_acero),
+    (Emboar)-[:CONOCE]->(Envite_igneo),
+    (Emboar)-[:CONOCE]->(Sofoco),
+    (Emboar)-[:CONOCE]->(Terremoto),
+    (Emboar)-[:CONOCE]->(Fertilizante),
+    (Zekrom)-[:CONOCE]->(Voltiocambio),
+    (Zekrom)-[:CONOCE]->(Rayo),
+    (Zekrom)-[:CONOCE]->(Garra_dragon),
+    (Zekrom)-[:CONOCE]->(Cometa_draco),
+    (Rayquaza)-[:CONOCE]->(Cometa_draco),
+    (Rayquaza)-[:CONOCE]->(Garra_dragon),
+    (Rayquaza)-[:CONOCE]->(Vuelo),
+    (Rayquaza)-[:CONOCE]->(Brillo_magico),
+    (Vaporeon)-[:CONOCE]->(Surf),
+    (Vaporeon)-[:CONOCE]->(Hidrobomba),
+    (Vaporeon)-[:CONOCE]->(Cura_floral),
+    (Vaporeon)-[:CONOCE]->(Persecucion),
+    (Tyranitar)-[:CONOCE]->(Pedrada),
+    (Tyranitar)-[:CONOCE]->(Romperrocas),
+    (Tyranitar)-[:CONOCE]->(Persecucion),
+    (Tyranitar)-[:CONOCE]->(Trapicheo),
+    (Snorlax)-[:CONOCE]->(Gigaimpacto),
+    (Snorlax)-[:CONOCE]->(Hiperrayo),
+    (Snorlax)-[:CONOCE]->(A_bocajarro),
+    (Snorlax)-[:CONOCE]->(Despejar),
+    (Starmie)-[:CONOCE]->(Surf),
+    (Starmie)-[:CONOCE]->(Hidrobomba),
+    (Starmie)-[:CONOCE]->(Espacio_raro),
+    (Starmie)-[:CONOCE]->(Paz_mental),
+    (Zapdos)-[:CONOCE]->(Rayo),
+    (Zapdos)-[:CONOCE]->(Voltiocambio),
+    (Zapdos)-[:CONOCE]->(Vuelo),
+    (Zapdos)-[:CONOCE]->(Despejar),
+    (Rhydon)-[:CONOCE]->(Pedrada),
+    (Rhydon)-[:CONOCE]->(Romperrocas),
+    (Rhydon)-[:CONOCE]->(Terremoto),
+    (Rhydon)-[:CONOCE]->(Fertilizante),
+    (Jolteon)-[:CONOCE]->(Voltiocambio),
+    (Jolteon)-[:CONOCE]->(Rayo),
+    (Jolteon)-[:CONOCE]->(Chupavidas),
+    (Jolteon)-[:CONOCE]->(Paliza),
+    (Alakazam)-[:CONOCE]->(Paz_mental),
+    (Alakazam)-[:CONOCE]->(Espacio_raro),
+    (Alakazam)-[:CONOCE]->(Psicopatada),
+    (Alakazam)-[:CONOCE]->(Bola_sombra),
+    (Sceptile)-[:CONOCE]->(Energibola),
+    (Sceptile)-[:CONOCE]->(Drenadoras),
+    (Sceptile)-[:CONOCE]->(Terremoto),
+    (Sceptile)-[:CONOCE]->(Eructo),
+    (Sudowoodo)-[:CONOCE]->(Pedrada),
+    (Sudowoodo)-[:CONOCE]->(Romperrocas),
+    (Sudowoodo)-[:CONOCE]->(Energibola),
+    (Sudowoodo)-[:CONOCE]->(Drenadoras),
+    (Amongus)-[:CONOCE]->(Drenadoras),
+    (Amongus)-[:CONOCE]->(Energibola),
+    (Amongus)-[:CONOCE]->(Despejar),
+    (Amongus)-[:CONOCE]->(Cura_floral),
+    (Jynx)-[:CONOCE]->(Nieve_polvo),
+    (Jynx)-[:CONOCE]->(Colmillo_hielo),
+    (Jynx)-[:CONOCE]->(Persecucion),
+    (Jynx)-[:CONOCE]->(Robo),
+    (Shaymin)-[:CONOCE]->(Energibola),
+    (Shaymin)-[:CONOCE]->(Drenadoras),
+    (Shaymin)-[:CONOCE]->(Cura_floral),
+    (Shaymin)-[:CONOCE]->(Paz_mental),
+    (Torterra)-[:CONOCE]->(Energibola),
+    (Torterra)-[:CONOCE]->(Drenadoras),
+    (Torterra)-[:CONOCE]->(Terremoto),
+    (Torterra)-[:CONOCE]->(Fertilizante),
+    (Turtwig)-[:CONOCE]->(Energibola),
+    (Turtwig)-[:CONOCE]->(Drenadoras),
+    (Turtwig)-[:CONOCE]->(Pedrada),
+    (Turtwig)-[:CONOCE]->(Romperrocas),
+    (Eevee)-[:CONOCE]->(Gigaimpacto),
+    (Eevee)-[:CONOCE]->(Hiperrayo),
+    (Eevee)-[:CONOCE]->(A_bocajarro),
+    (Eevee)-[:CONOCE]->(Despejar),
+    (Larvitar)-[:CONOCE]->(Pedrada),
+    (Larvitar)-[:CONOCE]->(Romperrocas),
+    (Larvitar)-[:CONOCE]->(Terremoto),
+    (Larvitar)-[:CONOCE]->(Fertilizante),
+    (Piplup)-[:CONOCE]->(Surf),
+    (Piplup)-[:CONOCE]->(Hidrobomba),
+    (Piplup)-[:CONOCE]->(Persecucion),
+    (Piplup)-[:CONOCE]->(Cabeza_de_hierro),
+    (Munchlax)-[:CONOCE]->(Gigaimpacto),
+    (Munchlax)-[:CONOCE]->(Hiperrayo),
+    (Munchlax)-[:CONOCE]->(Despejar),
+    (Munchlax)-[:CONOCE]->(Paliza),
+    (Grovyle)-[:CONOCE]->(Energibola),
+    (Grovyle)-[:CONOCE]->(Drenadoras),
+    (Grovyle)-[:CONOCE]->(Eructo),
+    (Grovyle)-[:CONOCE]->(Bola_sombra),
+    (Deoxys)-[:CONOCE]->(Paz_mental),
+    (Deoxys)-[:CONOCE]->(Espacio_raro),
+    (Deoxys)-[:CONOCE]->(Psicopatada),
+    (Deoxys)-[:CONOCE]->(Vuelo),
+    (Groudon)-[:CONOCE]->(Envite_igneo),
+    (Groudon)-[:CONOCE]->(Sofoco),
+    (Groudon)-[:CONOCE]->(Terremoto),
+    (Groudon)-[:CONOCE]->(Fertilizante),
+    (Jirachi)-[:CONOCE]->(Cometa_draco),
+    (Jirachi)-[:CONOCE]->(Garra_dragon),
+    (Jirachi)-[:CONOCE]->(Ala_de_acero),
+    (Jirachi)-[:CONOCE]->(Cabeza_de_hierro),
+    (Hitmonchan)-[:CONOCE]->(A_bocajarro),
+    (Hitmonchan)-[:CONOCE]->(Psicopatada),
+    (Hitmonchan)-[:CONOCE]->(Paliza),
+    (Hitmonchan)-[:CONOCE]->(Colmillo_hielo),
+    (Toxicroak)-[:CONOCE]->(Psicopatada),
+    (Toxicroak)-[:CONOCE]->(Eructo),
+    (Toxicroak)-[:CONOCE]->(Zumbido),
+    (Toxicroak)-[:CONOCE]->(Robo),
+    (Blaziken)-[:CONOCE]->(Trapicheo),
+    (Blaziken)-[:CONOCE]->(Envite_igneo),
+    (Blaziken)-[:CONOCE]->(Sofoco),
+    (Blaziken)-[:CONOCE]->(A_bocajarro)
+----
+
+//graph
+
+Ahora veremos información basica de la base de datos.
+
+==Queries elementales
+
+=== Pokemons de tipo electico del entrenador Knekro
+[source,cypher]
+----
+MATCH (:Entrenador{nombre:"Knekro"})-[:ENTRENA]->(n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Electrico"}) RETURN n
+----
+//table
+
+//graph_result
+
+=== Pokemon de tipo agua que conozcan el movimiento Surf
+[source,cypher]
+----
+MATCH (n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Agua"}) MERGE (:Pokemon)-[:CONOCE]->(:Movimiento{nombre:"Surf"}) RETURN DISTINCT n
+----
+
+//table
+
+//graph_result
+
+==Queries intermedias
+
+===Pokemons cuyos tipos en la evolución sean distintos a los de las pre-evoluciones
+[source,cypher]
+----
+MATCH (n:Pokemon)-[:EVOLUCIONA_A]->(p:Pokemon),(p)-[:TIENE_TIPO]->(t:Tipo) WHERE NOT (n)-[:TIENE_TIPO]->(:Tipo{nombre:t.nombre}) RETURN DISTINCT n
+----
+
+//table
+
+//graph_result
+
+===Pokemon de tipo normal de Kanto que evolucionan
+[source,cypher]
+----
+MATCH (p:Pokemon)-[:PERTENECE]->(r:Region) WHERE r.nombre="Kanto" AND (p)-[:TIENE_TIPO]->(:Tipo{nombre:"Normal"}) AND (p)-[:EVOLUCIONA_A]->(:Pokemon) RETURN DISTINCT p
+----
+
+==Queries avanzadas
+
+===Resumen del pokemon jolteon mostrando entrenadores, tipo, región, movimientos y evoluciones
+[source,cypher]
+----
+MATCH (Jolteon:Pokemon {nombre:"Jolteon"})-[*0..1]-(n) MATCH (n)-[r]->() RETURN n, r
+----
+
+//table
+
+//graph_result
+
+===Pokemons que conozcan movimientos cuyo tipo sea distinto al tipo del Pokemon
+[source,cypher]
+----
+MATCH((p:Pokemon)-[:CONOCE]->(m:Movimiento)-[:ES_DE_TIPO]-(t:Tipo)) WHERE NOT EXISTS{MATCH (pok:Pokemon)-[:TIENE_TIPO]->(tip:Tipo) WHERE p=pok AND tip=t} RETURN DISTINCT p
+----
+
+//table
+
+//graph_result

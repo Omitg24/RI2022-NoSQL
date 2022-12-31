@@ -1,0 +1,11 @@
+- Simples: 
+	-> MATCH (:Entrenador{nombre:"Knekro"})-[:ENTRENA]->(n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Electrico"}) RETURN n
+	-> MATCH (n:Pokemon)-[:TIENE_TIPO]->(:Tipo{nombre:"Agua"}) MERGE (:Pokemon)-[:CONOCE]->(:Movimiento{nombre:"Surf"}) RETURN DISTINCT n
+	
+- Intermedias:
+	-> MATCH (p:Pokemon)-[:PERTENECE]->(r:Region) WHERE r.nombre="Kanto" AND (p)-[:TIENE_TIPO]->(:Tipo{nombre:"Normal"}) AND (p)-[:EVOLUCIONA_A]->(:Pokemon) RETURN DISTINCT p
+	-> MATCH (n:Pokemon)-[:EVOLUCIONA_A]->(p:Pokemon),(p)-[:TIENE_TIPO]->(t:Tipo) WHERE NOT (n)-[:TIENE_TIPO]->(:Tipo{nombre:t.nombre}) RETURN DISTINCT n
+	
+- Avanzadas:
+	-> MATCH((p:Pokemon)-[:CONOCE]->(m:Movimiento)-[:ES_DE_TIPO]-(t:Tipo)) WHERE NOT EXISTS{MATCH (pok:Pokemon)-[:TIENE_TIPO]->(tip:Tipo) WHERE p=pok AND tip=t} RETURN DISTINCT p
+	-> MATCH (Jolteon:Pokemon {nombre:"Jolteon"})-[*0..1]-(n) MATCH (n)-[r]->() RETURN n, r
