@@ -8,7 +8,7 @@ class Pokemon {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male",
-                encrypted: window.location.protocol === 'https:' ? 'ENCRYPTION_ON': 'ENCRYPTION_OFF'
+                encrypted: window.location.protocol === 'https:' ? 'ENCRYPTION_ON' : 'ENCRYPTION_OFF'
             }, visConfig: {
                 autoResize: true,
                 edges: {
@@ -141,8 +141,9 @@ class Pokemon {
 
     async conectarDriver() {
         const driver = neo4j.driver("bolt://35.170.182.177:7687"
-            , neo4j.auth.basic("neo4j", "boom-selections-male"), 
-                { encrypted: 'ENCRYPTION_OFF', trust: 'TRUST_SYSTEM_CA_SIGNED_CERTIFICATES' })
+            , neo4j.auth.basic("neo4j", "boom-selections-male"), {
+            encrypted: window.location.protocol === 'https:' ? 'ENCRYPTION_ON' : 'ENCRYPTION_OFF'
+        })
         try {
             await driver.verifyConnectivity();
             console.log('Driver created');
