@@ -143,7 +143,7 @@ class Pokemon {
     async conectarDriver() {
         const driver = neo4j.driver("bolt://35.170.182.177:7687"
             , neo4j.auth.basic("neo4j", "boom-selections-male"), 
-                { encrypted: 'ENCRYPTION_OFF', trust: 'TRUST_ALL_CERTIFICATES' })
+                { encrypted: 'ENCRYPTION_OFF', trust: 'TRUST_SYSTEM_CA_SIGNED_CERTIFICATES' })
         try {
             await driver.verifyConnectivity();
             console.log('Driver created');
@@ -172,7 +172,6 @@ class Pokemon {
         var result = await this.session.run(query);
         var str = this.convertirResultado(result);
         $("#resultado").text(str);
-        console.log(str);
         this.viz.renderWithCypher(query);
     }
 
