@@ -4,12 +4,11 @@ class Pokemon {
         this.conectarDriver();
         var config = {
             containerId: "viz",
-            encrypted: 'ENCRYPTION_OFF',
             neo4j: {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male",
-                encrypted: 'ENCRYPTION_OFF'
+                encrypted: window.location.protocol === 'https:' ? 'ENCRYPTION_ON': 'ENCRYPTION_OFF'
             }, visConfig: {
                 autoResize: true,
                 edges: {
