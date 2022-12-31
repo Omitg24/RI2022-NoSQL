@@ -3,13 +3,13 @@ class Pokemon {
     constructor() {
         this.conectarDriver();
         var config = {
-            encryption: false,
             containerId: "viz",
+            encrypted: 'ENCRYPTION_OFF',
             neo4j: {
                 serverUrl: "bolt://35.170.182.177:7687",
                 serverUser: "neo4j",
                 serverPassword: "boom-selections-male",
-                encryption: false
+                encrypted: 'ENCRYPTION_OFF'
             }, visConfig: {
                 autoResize: true,
                 edges: {
